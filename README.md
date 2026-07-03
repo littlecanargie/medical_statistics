@@ -1,3 +1,3 @@
-# Biostatistics
+# 醫用生物統計學
 
-This repository contains latex codes for the materials used in my course *Biostatistics* at National Tsing Hua University, Taiwan.  The course is intended for first-year post-baccalaureate medical students.  If you are only interested in accessing the book but not the latex code, navigate to the **pdf** folder.
+本 repo 為我在國立清華大學講授 **生物統計** 課程所用教材的 LaTeX 原始碼。該課程專為學士後醫學系一年級學生設計。如果您只想閱覽教材而不需要 LaTeX 原始碼，請前往 **pdf** 資料夾。
