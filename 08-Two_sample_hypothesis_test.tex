@@ -2,7 +2,7 @@
 
     前一章我們介紹了假說檢定的架構，以及如何檢定一組樣本背後的母體平均值（或母體比例）是否大於、等於、或小於我們預想的數值。然而，在生醫研究中，我們更常有興趣的是，從兩個母體各抽出一組樣本後，檢定背後兩個母體的平均值或是比例之間的關係。例如，在血壓藥物的隨機對照實驗中，我們將受試者隨機分為兩組並各給予不同的藥物治療。此時我們有興趣的是，接受兩種藥物治療後的平均血壓是否有差別，進而推論兩種藥物的效果優劣。因此，本章我們將著重探討如何針對兩組樣本的母體平均值（或母體比例）差異作檢定，以及如何為這個差異建構信賴區間。
     
-    \begin{introduction}[第 \thechapter 章學習目標]
+    \begin{introduction}[第 \thechapter 章學習目標]{1}
         \item 在各種母體假設下，利用 $Z$ 及 $t$ 檢定比較兩組樣本的母體平均
         \item 檢定比較兩組樣本的母體比例
         \item 母體平均差值及母體比例差值的信賴區間建構
@@ -11,34 +11,22 @@
 \section{母體平均的獨立雙樣本檢定：兩個母體均為常態分布且變異數已知}
 
     我們首先討論如何比較兩組常態樣本背後之母體平均。假設已知兩個母體均服從常態分布且互相獨立。兩者母體平均未知，分別記為 $\mu_1$ 和 $\mu_2$，但變異數均已知，分別為 $\sigma_1^2$ 和 $\sigma_2^2$。若將兩組樣本的樣本平均記為 $\bar{X}_1, \bar{X}_2$，則其抽樣分布應分別為
+    \smallskip
     \[\bar{X}_1 \sim \NN\Big(\mu_1, \frac{\sigma_1^2}{n_1}\Big) \qquad ; \qquad \bar{X}_2 \sim \NN\Big(\mu_2, \frac{\sigma_2^2}{n_2}\Big)\]
+    \smallskip
     由於兩組樣本互相獨立，因此兩個樣本平均也互相獨立。將兩個樣本平均相減後，期望值亦為相減，變異數則因獨立而為相加：
+    \smallskip
     \[\bar{X}_2-\bar{X}_1 \sim \NN \Big(\mu_2 - \mu_1, \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}\Big)\]
+    \smallskip
     由於 $\bar{X}_2-\bar{X}_1$ 服從常態分布，我們可以將其做 $z$ 轉換，轉換後即服從標準常態分布
+    \smallskip
     \[\frac{(\bar{X}_2-\bar{X}_1)-(\mu_2-\mu_1)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim \ZZ\]
+    \smallskip
     此時根據虛無假說和對立假說的形式，我們可以對 $\mu_2-\mu_1$ 的數值建構檢定。為了簡單起見，我們假定虛無假說都是 $H_0: \mu_2 = \mu_1$ 的形式，也就是在虛無假說下兩個母體的平均相等。如此一來，在虛無假說下，以下 $Z$ 檢定量的虛無分布為標準常態分布：
+    \smallskip
     \[Z := \frac{\bar{X}_2-\bar{X}_1}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim \ZZ\]
-    對立假說隨著 $\mu_2-\mu_1$ 的方向不同而決定其為右尾、左尾或雙尾檢定。若設定為 $H_1: \mu_2 > \mu_1$ 則為右尾檢定；若設定為 $H_1: \mu_2 < \mu_1$ 則為左尾檢定；若設定為 $H_1: \mu_2 \ne \mu_1$ 則為雙尾檢定。
-
-    \noindent\underline{\textbf{右尾檢定}}
-
-    右尾檢定的假說形如 $H_0: \; \mu_2 = \mu_1 \; ; \; H_1: \; \mu_2 > \mu_1$。我們可以用 $p$ 值法來建構檢定：當對立假說為真時，$\bar{X}_2 - \bar{X}_1$ 的期望值 $\mu_2 - \mu_1$ 會大於 0，因此 $Z$ 偏大的方向是比較「極端」的方向。根據 $p$ 值的定義可以寫出
-    \[p = \PP(\ZZ \ge Z)\]
-    此時若 $p \le \alpha$ 則拒絕虛無假說、接受對立假說；反之則無法拒絕虛無假說。同樣地，我們也可以用拒絕域法建構檢定而得到拒絕區為 $Z \ge z_\alpha$，統計量臨界值為 $z_\alpha$。
-
-    \noindent\underline{\textbf{左尾檢定}}
-
-    若假說形如 $H_0: \; \mu_2 = \mu_1 \; ; \; H_1: \; \mu_2 < \mu_1$，我們可以用 $p$ 值法來建構檢定：當對立假說為真時，$\bar{X}_2 - \bar{X}_1$ 的期望值 $\mu_2 - \mu_1$ 會小於 0，因此 $Z$ 偏小的方向是比較「極端」的方向。根據 $p$ 值的定義可以寫出
-    \[p = \PP(\ZZ \le Z)\]
-    此時若 $p \le \alpha$ 則拒絕虛無假說、接受對立假說；反之則無法拒絕虛無假說。同樣地，我們也可以用拒絕域法建構檢定而得到拒絕區為 $Z \le z_\alpha$，統計量臨界值為 $z_\alpha$。
-
-    \noindent\underline{\textbf{雙尾檢定}}
-
-    若假說形如 $H_0: \; \mu_2 = \mu_1 \; ; \; H_1: \; \mu_2 \ne \mu_1$，我們可以用 $p$ 值法來建構檢定：當對立假說為真時，$\bar{X}_2 - \bar{X}_1$ 的期望值 $\mu_2 - \mu_1$ 會往兩側遠離 0，因此 $Z$ 不論偏大或偏小都是「極端」的方向。且因為 $Z$ 的虛無分布期望值為零，$Z$ 和 $-Z$ 的極端程度是一樣的。因此，根據 $p$ 值的定義可以寫出
-    \[p = \PP((\ZZ \ge |Z|)\cup(\ZZ \le -|Z|)) = 2\PP(\ZZ \ge |Z|)\]
-    此時若 $p \le \alpha$ 則拒絕虛無假說、接受對立假說；反之則無法拒絕虛無假說。同樣地，我們也可以用拒絕域法建構檢定而得到拒絕區為 $|Z| \ge z_{\alpha/2}$，統計量臨界值為 $\pm z_{\alpha}$ 。
-
-    以下我們用表 \ref{tab:two_sample_z} 來整理母體服從常態分布且變異數已知的母體平均雙樣本檢定。由於此檢定比較了兩組獨立樣本，且是用 $Z$ 檢定統計量來建構，統計量的虛無分布為標準常態分布($\ZZ$)，因此此檢定亦稱為\textit{獨立樣本 Z 檢定} (Independent sample Z test) 或\textit{雙樣本 Z 檢定} (Two-sample Z test)。
+    \smallskip
+    對立假說隨著 $\mu_2-\mu_1$ 的方向不同而決定其為右尾、左尾或雙尾檢定。若設定為 $H_1: \mu_2 > \mu_1$ 則為右尾檢定；若設定為 $H_1: \mu_2 < \mu_1$ 則為左尾檢定；若設定為 $H_1: \mu_2 \ne \mu_1$ 則為雙尾檢定。利用與上一章相同的推演流程，我們可將各種檢定的細節整理如表 \ref{tab:two_sample_z}。由於此檢定比較了兩組獨立樣本，且是用 $Z$ 檢定統計量來建構，統計量的虛無分布為標準常態分布($\ZZ$)，因此此檢定亦稱為\textit{獨立樣本 Z 檢定} (Independent sample Z test) 或\textit{雙樣本 Z 檢定} (Two-sample Z test)。
 
     \begin{table}[htbp]
         \begin{center}
@@ -56,49 +44,47 @@
     \end{table}
 
     除了進行檢定外，我們也可以根據 $\bar{X}_2 - \bar{X}_1$ 作 $z$ 轉換後的抽樣分布，建構母體平均差 $\mu_2 - \mu_1$ 的信賴區間。以 $(1-\alpha) \times 100\%$ 雙尾信賴區間為例，因為 $\frac{(\bar{X}_2-\bar{X}_1)-(\mu_2-\mu_1)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim \ZZ$，
+    \smallskip
     \[\PP\Bigg(-z_{\alpha/2} < \frac{(\bar{X}_2-\bar{X}_1)-(\mu_2-\mu_1)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} < z_{\alpha/2}\Bigg) = 1-\alpha\]
     \[\PP\Bigg[(\bar{X}_2-\bar{X}_1) - z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}} < \mu_2-\mu_1  < (\bar{X}_2-\bar{X}_1) + z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}\Bigg] = 1-\alpha\]
+    \smallskip
     因此，$\mu_2-\mu_1$ 的 $(1-\alpha) \times 100\%$ \textbf{雙尾}信賴區間即為
+    \smallskip
     \[\Bigg((\bar{X}_2-\bar{X}_1) - z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}},  (\bar{X}_2-\bar{X}_1) + z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}\Bigg)\]
+    \smallskip
     根據我們上一章有關檢定與信賴區間之間關係的探討，當這個雙尾信賴區間未覆蓋到 $0$ 時，等同於在顯著水準 $\alpha$ 下拒絕 $\mu_2 - \mu_1 = 0$ 的虛無假說，並接受 $\mu_2 \ne \mu_1$ 的\textbf{雙尾}對立假說。同理，$\mu_2-\mu_1$ 的 $(1-\alpha) \times 100\%$ 右尾及左尾信賴區間分別為
+    \smallskip
     \[\Bigg((\bar{X}_2-\bar{X}_1) - z_{\alpha} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}, \infty \Bigg) \quad ; \quad \Bigg(-\infty, (\bar{X}_2-\bar{X}_1) + z_{\alpha} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}} \Bigg)\]
+    \smallskip
     前者未覆蓋到 $0$ 則可接受 $\mu_2 > \mu_1$ 的對立假說，後者未覆蓋到 $0$ 則可接受 $\mu_2 < \mu_1$ 的對立假說。
     
 \section{母體平均的獨立雙樣本檢定：兩個母體均為常態分布但變異數未知}
 
     上一節我們假設了兩個母體均為常態分布且變異數均已知，因此可以將樣本平均的差 $\bar{X}_2-\bar{X}_1$ 進行 $z$ 轉換，且得到在兩母體平均相等（$H_0: \mu_1 = \mu_0$）的虛無假說下
+    \smallskip
     \[Z := \frac{\bar{X}_2-\bar{X}_1}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim \ZZ\]
-    當變異數未知時，$\sigma_1^2$ 和 $\sigma_2^2$ 均為未知數，因此無法計算 $Z$ 統計量。此時，按照我們之前在單樣本檢定的經驗，我們會希望能以兩組的樣本變異數 $s_1^2$ 和 $s_2^2$ 帶入 $\sigma_1^2$ 和 $\sigma_2^2$，並希望帶入後的統計量能夠是我們熟知的分布（在單樣本的例子是自由度為樣本數減一的 $t$ 分布）。然而事與願違，如此帶入後得到的檢定量並不完全服從 $t$ 分布，僅能根據統計學家 Bernard Lewis Welch (1911–29) 提出的方法，用一個自由度十分複雜的 $t$ 分布來近似該統計量的虛無分布，此檢定也被稱為 \textit{Welch $t$ 檢定} (Welch $t$ test)，在大多數統計軟體套件均有提供：
+    \smallskip
+    當變異數未知時，$\sigma_1^2$ 和 $\sigma_2^2$ 均為未知數，因此無法計算 $Z$ 統計量。此時，按照我們之前在單樣本檢定的經驗，我們會希望能以兩組的樣本變異數 $s_1^2$ 和 $s_2^2$ 帶入 $\sigma_1^2$ 和 $\sigma_2^2$，並希望帶入後的統計量能夠是我們熟知的分布（在單樣本的例子是自由度為樣本數減一的 $t$ 分布）。然而事與願違，如此帶入後得到的檢定量並不完全服從 $t$ 分布，僅能根據統計學家 Bernard Lewis Welch (1911–29) 提出的方法，用一個自由度十分複雜的 $t$ 分布來\textit{近似}該統計量的虛無分布，此檢定也被稱為 \textit{Welch $t$ 檢定} (Welch $t$ test)，在大多數統計軟體套件均有提供：
+    \smallskip
     \[t^* := \frac{\bar{X}_2-\bar{X}_1}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \sim t_\nu \quad; \quad \nu \approx \frac{(s_1^2/n_1+s_2^2/n_2)^2}{s_1^4/n_1^2(n_1-1) +s_2^4/n_2^2(n_2-1)}\]
+    \smallskip
     除了使用含有近似成分的 Welch $t$ 檢定外，如果我們願意新增一個「\textbf{兩個母體變異數相等}」假設，那麼就可以建構一個精確的 $t$ 檢定。當兩組的母體變異數均為 $\sigma^2$，原本的 $Z$ 統計量就可寫為
+    \smallskip
     \[Z := \frac{\bar{X}_2-\bar{X}_1}{\sqrt{\sigma^2\big(\frac{1}{n_1} + \frac{1}{n_2}\big)}}\]
+    \smallskip
     此時因為兩個母體變異數相等，兩組的樣本變異數 $s_1^2$ 和 $s_2^2$ 都是母體變異數 $\sigma^2$ 的不偏估計量，但其準確度則取決於兩者的自由度 $n_1-1$ 和 $n_2-1$：自由度越大，準確度越大。因此，我們可以將 $s_1^2$ 和 $s_2^2$ 取加權平均，權重和兩者的自由度成正比而得到\textit{合併變異數估計值} (pooled variance estimate)：
+    \smallskip
     \[s_{\text{pooled}}^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}\]
+    \smallskip
     而後我們可以將合併變異數估計值帶入 $Z$ 檢定量中未知的 $\sigma^2$ 而得到 $t$ 檢定統計量：
-    \[ t := \frac{\bar{X}_2-\bar{X}_1}{\sqrt{s_{\text{pooled}}^2\big(\frac{1}{n_1} + \frac{1}{n_2}\big)}} \sim t_{n_1+n_2-2}\]    
+    \smallskip
+    \[ t := \frac{\bar{X}_2-\bar{X}_1}{\sqrt{s_{\text{pooled}}^2\big(\frac{1}{n_1} + \frac{1}{n_2}\big)}} \sim t_{n_1+n_2-2}\]
+    \smallskip
     此統計量在 $H_0: \mu_2 = \mu_1$ 下的虛無分布為自由度等於 $n_1 + n_2 - 2$ 的 $t$ 分布。這裡 $t$ 分布的自由度和先前單樣本的想法相同，取決於分母計算變異數時，使用的樣本數減去估計的參數個數。此處總樣本數為 $n_1+n_2$，但在計算 $s_1^2$ 和 $s_2^2$ 時各估計了一個組內的平均值，所以需要減去 $2$，從而得到 $n_1 + n_2 - 2$ 的自由度。
+
+    \medskip
     
-    根據上述的 $t$ 統計量，我們可以根據對立假設的方向建構右尾、左尾與雙尾檢定：
-    
-    \noindent\underline{\textbf{右尾檢定}}
-
-    右尾檢定的假說形如 $H_0: \; \mu_2 = \mu_1 \; ; \; H_1: \; \mu_2 > \mu_1$。我們先用 $p$ 值法來建構檢定：當對立假說為真時，$\bar{X}_2 - \bar{X}_1$ 的期望值 $\mu_2 - \mu_1$ 會大於 0，因此 $t$ 偏大的方向是比較「極端」的方向。根據 $p$ 值的定義可以寫出
-    \[p = \PP(t_{n_1+n_2-2} \ge t)\]
-    此時若 $p \le \alpha$ 則拒絕虛無假說、接受對立假說；反之則無法拒絕虛無假說。同樣地，我們也可以用拒絕域法建構檢定而得到拒絕區為 $t \ge t_{n_1+n_2-2,\alpha}$，統計量臨界值為 $t_{n_1+n_2-2,\alpha}$。
-
-    \noindent\underline{\textbf{左尾檢定}}
-
-    若假說形如 $H_0: \; \mu_2 = \mu_1 \; ; \; H_1: \; \mu_2 < \mu_1$，我們仍先用 $p$ 值法來建構檢定：當對立假說為真時，$\bar{X}_2 - \bar{X}_1$ 的期望值 $\mu_2 - \mu_1$ 會小於 0，因此 $t$ 偏小的方向是比較「極端」的方向。根據 $p$ 值的定義可以寫出
-    \[p = \PP(t_{n_1+n_2-2} \le t)\]
-    此時若 $p \le \alpha$ 則拒絕虛無假說、接受對立假說；反之則無法拒絕虛無假說。同樣地，我們也可以用拒絕域法建構檢定而得到拒絕區為$t \le -t_{n_1+n_2-2,\alpha}$，統計量臨界值為 $-t_{n_1+n_2-2,\alpha}$。
-
-    \noindent\underline{\textbf{雙尾檢定}}
-
-    若假說形如 $H_0: \; \mu_2 = \mu_1 \; ; \; H_1: \; \mu_2 \ne \mu_1$，我們用 $p$ 值法來建構檢定：當對立假說為真時，$\bar{X}_2 - \bar{X}_1$ 的期望值 $\mu_2 - \mu_1$ 會往兩側遠離 0，因此 $t$ 不論偏大或偏小都是「極端」的方向。且因為 $t$ 的虛無分布期望值為零，$t$ 和 $-t$ 的極端程度是一樣的。因此，根據 $p$ 值的定義可以寫出
-    \[p = \PP((t_{n_1+n_2-2} \ge |t|)\cup(t_{n_1+n_2-2} \le -|t|)) = 2\PP(t_{n_1+n_2-2} \ge |t|)\]
-    此時若 $p \le \alpha$ 則拒絕虛無假說、接受對立假說；反之則無法拒絕虛無假說。我們也可以用拒絕域法建構檢定而得到拒絕區 $|t| \ge t_{n_1+n_2-2,\alpha/2}$，統計量臨界值為 $\pm t_{n_1+n_2-2,\alpha/2}$ 。
-    
-    以下我們用表 \ref{tab:two_sample_t} 來整理母體服從常態分布且變異數未知的母體平均雙樣本檢定。因為這個檢定是利用 $t$ 分布和兩組獨立樣本做的檢定，因此常被稱為\textit{獨立樣本 $t$ 檢定} (independent $t$-test)或\textit{雙樣本 $t$ 檢定} (two-sample $t$-test)：
+    根據上述的 $t$ 統計量，我們可以根據對立假設的方向建構右尾、左尾與雙尾檢定並整理如表 \ref{tab:two_sample_t}。因為這個檢定是利用 $t$ 分布和兩組獨立樣本做的檢定，因此常被稱為\textit{獨立樣本 $t$ 檢定} (independent $t$-test)或\textit{雙樣本 $t$ 檢定} (two-sample $t$-test)。
 
     \begin{table}[htbp]
         \begin{center}
@@ -116,30 +102,62 @@
     \end{table}
 
     如同前一節所述，我們也可以用 $t$ 分布建構母體平均差 $\mu_2 - \mu_1$ 的信賴區間。以 $(1-\alpha) \times 100\%$ 雙尾信賴區間為例，因為 $\frac{(\bar{X}_2-\bar{X}_1)-(\mu_2-\mu_1)}{\sqrt{s_{\text{pooled}}^2\big(\frac{1}{n_1} + \frac{1}{n_2}\big)}} \sim t_{n_1+n_2-2}$，
+    \smallskip
     \[\PP\Bigg(-t_{n_1+n_2-2,\alpha/2} < \frac{(\bar{X}_2-\bar{X}_1)-(\mu_2-\mu_1)}{\sqrt{s_{\text{pooled}}^2\big(\frac{1}{n_1} + \frac{1}{n_2}\big)}} < t_{n_1+n_2-2,\alpha/2}\Bigg) = 1-\alpha\]
     \[\PP\Bigg[(\bar{X}_2-\bar{X}_1) - t_{n_1+n_2-2,\alpha/2} \sqrt{s_{\text{pooled}}^2\Big(\frac{1}{n_1} + \frac{1}{n_2}\Big)} < \mu_2-\mu_1  < (\bar{X}_2-\bar{X}_1) + t_{n_1+n_2-2,\alpha/2} \sqrt{s_{\text{pooled}}^2\Big(\frac{1}{n_1} + \frac{1}{n_2}\Big)}\Bigg] = 1-\alpha\]
+    \smallskip
     因此，$\mu_2-\mu_1$ 的 $(1-\alpha) \times 100\%$ \textbf{雙尾}信賴區間即為
+    \smallskip
     \[\Bigg((\bar{X}_2-\bar{X}_1) - t_{n_1+n_2-2,\alpha/2} \sqrt{s_{\text{pooled}}^2\Big(\frac{1}{n_1} + \frac{1}{n_2}\Big)}, (\bar{X}_2-\bar{X}_1) + t_{n_1+n_2-2,\alpha/2} \sqrt{s_{\text{pooled}}^2\Big(\frac{1}{n_1} + \frac{1}{n_2}\Big)}\Bigg)\]
+    \smallskip
     當這個雙尾信賴區間未覆蓋到 $0$ 時，等同於在顯著水準 $\alpha$ 下拒絕 $\mu_2 - \mu_1 = 0$ 的虛無假說，並接受 $\mu_2 \ne \mu_1$ 的\textbf{雙尾}對立假說。同理，$\mu_2-\mu_1$ 的 $(1-\alpha) \times 100\%$ 右尾及左尾信賴區間分別為：
+    \smallskip
     \[\Bigg((\bar{X}_2-\bar{X}_1) - t_{n_1+n_2-2,\alpha} \sqrt{s_{\text{pooled}}^2\Big(\frac{1}{n_1} + \frac{1}{n_2}\Big)}, \infty \Bigg)\quad ; \quad\Bigg(-\infty, (\bar{X}_2-\bar{X}_1) + t_{n_1+n_2-2,\alpha} \sqrt{s_{\text{pooled}}^2\Big(\frac{1}{n_1} + \frac{1}{n_2}\Big)} \Bigg)\]
+    \smallskip
     前者未覆蓋到 $0$ 則可接受 $\mu_2 > \mu_1$ 的對立假說，後者未覆蓋到 $0$ 則可接受 $\mu_2 < \mu_1$ 的對立假說。
+
+    \medskip
     
-    理論上，使用 Welch $t$ 檢定不論在兩組母體變異數相等或不相等時都能得到（近似）正確的檢定結論，因此兩個獨立樣本的母體平均值檢定應可直接使用 Welch $t$ 檢定。但實務上，只要母體變異數不要相差太大，Welch $t$ 檢定和雙樣本 $t$ 檢定的結論會相似，因此兩者之間的選擇影響不大。
+    理論上，使用 Welch $t$ 檢定不論在兩組母體變異數相等或不相等時都能得到（近似）正確的檢定結論。雙樣本 $t$ 檢定的優點在於，當兩個母體的變異數相等時，其檢定力會略高一些。然而在實務上，只要母體變異數不要相差太大，Welch $t$ 檢定和雙樣本 $t$ 檢定的結論會相似，因此兩者之間的選擇影響不大。
 
     \bigskip
 
-    \begin{custom}{練習}
+    \begin{custom}{動手作}
        某藥廠為比較其開發之新血壓藥 A 與鈣離子通道阻斷劑降低舒張壓之能力，將 36 名高血壓病患隨機分派至新血壓藥組與鈣離子通道阻斷劑組，各為 18 位。一個月後，新血壓藥 A 之病患平均舒張壓與標準差為 85 mmHg (5.1 mmHg)，鈣離子通道阻斷劑之病患平均舒張壓與標準差為 82 mmHg (4.9 mmHg)。假設各組治療後糖化血色素之分布均為常態分布且母體變異相同，在顯著水準設定為 0.05 下，新血壓藥 A 之舒張壓下降效果是否鈣離子通道阻斷劑來得好？
     \end{custom}
+
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{150pt}}
     
     \bigskip
 
-    \begin{custom}{練習}
+    \begin{custom}{動手作}
+       為了解非潰瘍性消化不良患者是否應使用制酸劑或H2受體拮抗劑治療，Nyrén 等人設計了一個雙盲、隨機、安慰劑對照試驗。該試驗召集了 159 名患有慢性上腹痛且無器質性病變的非潰瘍性消化不良患者，並將病患隨機分派至三組，每組均給予胃乳包（三餐飯後與睡前）與錠劑（每日兩次）並治療三週：54位被分到制酸劑組，其胃乳包含有氫氧化鋁、氫氧化鎂與碳酸鎂；51 位被分到 Cimetidine組，其錠劑含有 400 毫克的 H2 受體拮抗劑 Cimetinine；51 位被分到安慰劑組，其胃乳和錠劑均為安慰劑。(Nyrén et al. (1986). Absence of therapeutic benefit from antacids or cimetidine in non-ulcer dyspepsia. New England Journal of Medicine, 314(6), 339-343.)。在試驗開始前，各組病患的最大胃酸分泌量平均值及標準差分別為（以 $\mu$mol/min 為單位）：制酸劑組$317.3 \pm 142.7$、Cimetidine組 $328.6 \pm 159.8$、安慰劑組$317.5 \pm 136.1$。請利用檢定說明制酸劑組-安慰劑組與 Cimetidine 組-安慰劑組間的初始最大胃酸分泌量母體平均是否不同，並說明檢定之結論。
+    \end{custom}
+
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{480pt}}
+
+    \bigskip
+
+    \begin{custom}{動手作}
        GLP-1 agonist 與 SGLT2 inhibitor 為控制糖尿病的兩大類藥物。Frías 等人為了解比較同時使用兩種藥物與單用一種藥物的血糖降低效果，將 695 位使用 Metformin 治療但血糖控制不佳的第二型糖尿病病患隨機分派至三種治療（括號內為實際完成並納入分析之病患人數）：Exenatide 合併 Dapagliflozin (n=193)、單用Exenatide (n=184)、以及單用 dapagliflozin (n=196) (Frías et al. (2016). Exenatide once weekly plus dapagliflozin once daily versus exenatide or dapagliflozin alone in patients with type 2 diabetes inadequately controlled with metformin monotherapy (DURATION-8): a 28 week, multicentre, double-blind, phase 3, randomised controlled trial. The lancet Diabetes \& endocrinology, 4(12), 1004-1016.)。其中 Exenatide 為 GLP-1 agonist、Dapagliflozin 為 SGLT2 inhibitor。治療前三組之平均糖化血色素均為 9.3\%，治療後三組各別之平均糖化血色素與標準差分別為 7.2\% (1.3\%)、7.6\% (1.3\%) 與 7.7\% (1.1\%)。假設各組治療後糖化血色素之分布均為常態分布且母體變異相同，在顯著水準設定為 0.05 下，合併使用藥物之血糖下降效果是否與單用 GLP-1 agonist 有差異，差異之信賴區間為何？合併使用藥物之血糖下降效果是否與單用 SGLT2 inhibitor 有差異，差異之信賴區間為何？
     \end{custom}
 
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{420pt}}
+
+    \bigskip
+
+    \begin{custom}{動手作}
+       為了解 PCSK9 抑制劑 Inclisiran 對同合子家族性高膽固醇血症 (HoFH) 的治療效果，研究者發起了一個第三期隨機分派臨床試驗 ORION-13，其中有部分試驗乃採雙盲形式 (Wiegman et al. (2025). Efficacy and safety of inclisiran in adolescents with genetically confirmed homozygous familial hypercholesterolemia: results from the double-blind, placebo-controlled part of the ORION-13 randomized trial. Circulation, 151(25), 1758-1766.)。在雙盲的部分，試驗研究對象為患有 HoFH 的 12 至 18 歲青少年，並以 2:1 的比例隨機分派至 Inclisiran 組（n=9）或安慰劑組（n=4）。為量化藥物降低血清 LDL-C 濃度的效果，研究者將患者在追蹤 330 天之血清 LDL-C 相對於初始值的變化比例(即相減除以初始值)作為試驗的主要終點。結果顯示 Inclisiran 組之平均變化比例與標準差為 −21.0\% $\pm$ 15.1\%，安慰劑組則為 +13.0\% $\pm$ 41.9\% 。根據此數據，請用檢定說明 Inclisiran 是否有降低血清 LDL-C 之療效，並對該療效的大小建立 $95\%$ 雙尾信賴區間。
+    \end{custom}
+
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{420pt}}
+
+    \pagebreak
+
 \section{母體平均的配對雙樣本檢定}
     前面針對兩組樣本的母體平均進行比較時，均假設兩個樣本之間是獨立的。例如在比較 A 和 B 兩種藥物的隨機對照實驗中，接受 A 藥的病患和接受 B 藥的病患是相異的兩群人，所以資料中服用 A 藥後的平均結果和服用 B 藥後的平均結果是來自不同的病患，因而互相獨立。然而實際資料中，有可能兩組樣本均來自相同的受試者。例如，假定我們想知道服用 C 藥一個月平均而言是否會讓舒張壓下降，因此募集了一群高血壓病患先行測量服藥前的舒張壓，並在服用 C 藥一個月後再次測量舒張壓，資料舉例如表 \ref{tab:paired_data}。此時我們有兩組樣本，一組是服藥前的舒張壓、一組是服藥後的舒張壓，但這兩組樣本並不獨立，因為它們都來自同樣一群高血壓病患。更精確地來說，這兩組樣本其實有個 \textbf{一一對應} 的關係，每位病患都會貢獻一筆服藥前的血壓、以及一筆服藥後的血壓，而這兩個血壓值並不是獨立的（服藥前的血壓會影響到服藥後的血壓）。因此，此處我們不能使用雙樣本 $t$ 檢定來決定服藥前後的平均血壓是否相等。
+
+    \medskip
 
     解決上述配對樣本資料相依的方法十分簡單：我們的目的是想對服藥前後的平均血壓差異做推論，因此只要先行算出每位病患的服藥前後血壓差，再對算出來的血壓差作單樣本的母體平均檢定即可。換言之，表\ref{tab:paired_data}中，治療前和治療後兩個 column 的樣本平均因為來自於配對資料而不獨立，但我們可以將兩者的差值先行算出來，則該差值的母體平均大於、等於或小於 $0$ 就代表代表治療前的舒張壓大於、等於或小於治療後的舒張壓。而檢定該差值母體平均的方法，即可運用上一章所提到單樣本 $t$ 檢定。這個方法因為是用來處理配對資料，所以也被稱為\textit{配對 $t$ 檢定} (paired $t$-test)，它本質上其實就是一個單樣本的 $t$ 檢定，只是處理的樣本來自配對資料中每個個體的前後差異。
 
@@ -161,35 +179,24 @@
 
 \section{母體比例的獨立雙樣本檢定}
     我們前面提到的雙樣本檢定都僅限於有興趣的變項服從常態分布時才適用。然而，當我們有興趣的變項是二元變項，例如疾病發病與否，並且想比較兩個獨立樣本間發病機率的差異時，仍然可以運用中央極限定理以及前述的獨立樣本雙樣本檢定來進行推論。如同上一章所說明，在樣本數夠大的情況下，兩組樣本的樣本發病機率 $\hat{p}_1$ 和 $\hat{p}_2$ 之抽樣分布可寫為
+    \smallskip
     \[\hat{p}_1 \xrightarrow[]{d} \NN\Big(p_1, \frac{p_1(1-p_1)}{n_1}\Big) \quad ; \quad \hat{p}_2 \xrightarrow[]{d} \NN\Big(p_2, \frac{p_2(1-p_2)}{n_2}\Big)\]
+    \smallskip
     由於兩組樣本互相獨立，因此樣本發病機率之差的抽樣分布可寫為
+    \smallskip
     \[\hat{p}_2 - \hat{p}_1 \xrightarrow[]{d} \NN\Big(p_2 - p_1, \frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}\Big)\]
+    \smallskip
     在虛無假說為 $H_0 : p_2 = p_1 = \bar{p}$，也就是兩組樣本之母體比例相等的情況下，我們可以對 $\hat{p}_2 - \hat{p}_1$ 作 $z$ 轉換並得到
+    \smallskip
     \[Z:=\frac{\hat{p}_2 - \hat{p}_1}{\sqrt{\bar{p}(1-\bar{p})\big(\frac{1}{n_1} + \frac{1}{n_2}\big)}} \xrightarrow[]{d} \ZZ\]
+    \smallskip
     其中左側的統計量中，我們不知道共通母體比例 $\bar{p}$ 的數值，但我們知道在虛無假說下它同時是兩組的母體比例，因此可以將兩組資料合併後計算一個統整的樣本發病機率並帶入之，也就是
+    \smallskip
     \[\bar{p} = \frac{n_1\hat{p}_1 + n_2\hat{p}_2}{n_1+n_2}\]
+
+    \medskip
     
-    根據上面的 $Z$ 統計量，我們可以根據對立假說的方向建立假說檢定：
-
-    \noindent\underline{\textbf{右尾檢定}}
-
-    右尾檢定的假說形如 $H_0: \; p_2 = p_1 \; ; \; H_1: \; p_2 > p_1$。我們可以用 $p$ 值法來建構檢定：當對立假說為真時，$\hat{p}_2 - \hat{p}_1$ 的期望值 $p_2 - p_1$ 會大於 0，因此 $Z$ 偏大的方向是比較「極端」的方向。根據 $p$ 值的定義可以寫出
-    \[p = \PP(\ZZ \ge Z)\]
-    此時若 $p \le \alpha$ 則拒絕虛無假說、接受對立假說；反之則無法拒絕虛無假說。同樣地，我們也可以用拒絕域法建構檢定而得到拒絕區為 $Z \ge z_\alpha$，統計量臨界值為 $z_\alpha$。
-
-    \noindent\underline{\textbf{左尾檢定}}
-
-    若假說形如 $H_0: \; p_2 = p_1 \; ; \; H_1: \; p_2 < p_1$，我們可以用 $p$ 值法來建構檢定：當對立假說為真時，$\hat{p}_2 - \hat{p}_1$ 的期望值 $p_2 - p_1$ 會小於 0，因此 $Z$ 偏小的方向是比較「極端」的方向。根據 $p$ 值的定義可以寫出
-    \[p = \PP(\ZZ \le Z)\]
-    此時若 $p \le \alpha$ 則拒絕虛無假說、接受對立假說；反之則無法拒絕虛無假說。同樣地，我們也可以用拒絕域法建構檢定而得到拒絕區為 $Z \le z_\alpha$，統計量臨界值為 $z_\alpha$。
-
-    \noindent\underline{\textbf{雙尾檢定}}
-
-    若假說形如 $H_0: \; p_2 = p_1 \; ; \; H_1: \; p_2 \ne p_1$，我們可以用 $p$ 值法來建構檢定：當對立假說為真時，$\hat{p}_2 - \hat{p}_1$ 的期望值 $p_2 - p_1$ 會往兩側遠離 0，因此 $Z$ 不論偏大或偏小都是「極端」的方向。且因為 $Z$ 的虛無分布期望值為零，$Z$ 和 $-Z$ 的極端程度是一樣的。因此，根據 $p$ 值的定義可以寫出
-    \[p = \PP((\ZZ \ge |Z|)\cup(\ZZ \le -|Z|)) = 2\PP(\ZZ \ge |Z|)\]
-    此時若 $p \le \alpha$ 則拒絕虛無假說、接受對立假說；反之則無法拒絕虛無假說。同樣地，我們也可以用拒絕域法建構檢定而得到拒絕區為 $|Z| \ge z_{\alpha/2}$，統計量臨界值為 $\pm z_{\alpha}$ 。
-
-    以下我們用表 \ref{tab:two_sample_proportion} 來整理母體比例的獨立雙樣本檢定。
+    根據上面的 $Z$ 統計量，我們可以根據對立假說的方向建立假說檢定，如表 \ref{tab:two_sample_proportion} 所示。此檢定被稱為\textit{雙樣本比例檢定} (two-sample test for proportions)。
 
     \begin{table}[htbp]
         \begin{center}
@@ -207,38 +214,46 @@
     \end{table}
 
     除了進行檢定外，我們也可以根據 $\hat{p}_2 - \hat{p}_1$ 作 $z$ 轉換後的抽樣分布，建構母體比例差值 $p_2 - p_1$ 的信賴區間。以 $(1-\alpha) \times 100\%$ 雙尾信賴區間為例，因為 $\frac{(\hat{p}_2-\hat{p}_1)-(p_2-p_1)}{\sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}} \sim \ZZ$，
+    \smallskip
     \[\PP\Bigg(-z_{\alpha/2} < \frac{(\hat{p}_2-\hat{p}_1)-(p_2-p_1)}{\sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}} < z_{\alpha/2}\Bigg) = 1-\alpha\]
     \[\PP\Bigg[(\hat{p}_2-\hat{p}_1) - z_{\alpha/2} \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}} < p_2-p_1  < (\hat{p}_2-\hat{p}_1) + z_{\alpha/2} \sqrt{\frac{p_1(1-_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}\Bigg] = 1-\alpha\]
+    \smallskip
     因此，$p_2-p_1$ 的 $(1-\alpha) \times 100\%$ \textbf{雙尾}信賴區間即為
+    \smallskip
     \[\Bigg((\hat{p}_2-\hat{p}_1) - z_{\alpha/2} \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}, (\hat{p}_2-\hat{p}_1) + z_{\alpha/2} \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}\Bigg)\]
+    \smallskip
     此處我們不知道 $p_1$ 和 $p_2$ 的實際值，因此以 $\hat{p}_1$ 和 $\hat{p}_2$ 帶入：
+    \smallskip
     \[\Bigg((\hat{p}_2-\hat{p}_1) - z_{\alpha/2} \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}, (\hat{p}_2-\hat{p}_1) + z_{\alpha/2} \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}\Bigg)\]
+    \smallskip
     同理，$p_2-p_1$ 的 $(1-\alpha) \times 100\%$ 右尾及左尾信賴區間分別為
+    \smallskip
     \[\Bigg((\hat{p}_2-\hat{p}_1) - z_{\alpha} \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}, \infty \Bigg) \quad ; \quad \Bigg(-\infty, (\hat{p}_2-\hat{p}_1) + z_{\alpha} \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}} \Bigg)\]
+    \smallskip
 
+    \begin{custom}{動手作}
+        對於傳統治療反應不佳潰瘍性大腸炎患者，靜脈注射 Olamkicept 是否能夠增加臨床反應率？為了解此問題，Zhang 等人將 88 名患者隨機分配至 Olamkicept 每兩週 600mg (29 名)、Olamkicept 每兩週 300mg (30 名) 與安慰劑 (29 名)三組，並治療十二週 (Zhang et al. (2023). Effect of induction therapy with olamkicept vs placebo on clinical response in patients with active ulcerative colitis: a randomized clinical trial. Jama, 329(9), 725-734.)。治療後，三組分別有 17、13、和 10 位病患出現臨床反應。研究者欲了解三組的臨床反應率是否相同。請將顯著水準設為 0.1，各別比較兩組 Olamkicept 組之反應率是否與安慰劑組不同，並闡述檢定之結論。另外，請建立兩種 Olamkicept 劑量之反應率相對於安慰劑之差異的雙尾 $95\%$ 信賴區間。
+    \end{custom}
 
-    % \begin{figure}[htbp]
-    %     \centering
-    %     \includegraphics[width=0.7\textwidth]{figures/06-Hypothesis_testing/null_dist_binom.jpeg}
-    %     \caption{猜拳實驗假說檢定的虛無分佈}
-    %     \label{fig:}
-    % \end{figure}
-
-    % \begin{custom}{思考}
-    %    如果把顯著水準提高，拒絕域應該會變寬或是變窄？
-    % \end{custom}
-    
-    % \begin{table}[htbp]
-    %     \begin{center}
-    %         \begin{tabular}{ccccc}
-    %             \toprule
-    %             虛無假說($H_0$) & 對立假說($H_1$) & 檢定統計量 & $p$ 值 & 拒絕區\\
-    %         \end{tabular}
-    %         \caption{母體為常態分布且變異數未知的母體平均檢定\label{tab:}}
-    %     \end{center}
-    % \end{table}
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{300pt}}
     
     \bigskip 
+
+    \begin{takehome}
+        \item 若要比較兩組常態分配樣本的母體平均數（且母體變異數未知），首先需判斷兩組樣本是否為配對樣本。
+        \begin{itemize}
+            \item 配對樣本：採用配對 $t$ 檢定，即對每位受試者的組內差異進行單樣本 $t$ 檢定。
+            \item 獨立樣本：選擇何種檢定方法，取決於我們是否願意假設兩母體的變異數相等。
+            \begin{itemize}
+                \item 若假設兩母體變異數相等：採用雙樣本 $t$ 檢定。
+                \item 若不確定兩母體變異數是否相等：
+採用 Welch $t$ 檢定。
+            \end{itemize}
+        \end{itemize}
+        \item 若要比較兩組樣本的母體比例，則根據中央極限定理的常態近似，可採用雙樣本比例檢定。
+    \end{takehome}
+
+    \bigskip
     
     \begin{docexam}{（104-1醫學(一)）}
         某研究為分析降血壓藥的效果，採用病例對照設計(case-control study)，欲分析病例對照兩組樣本服降血壓藥3個月前後測量之血壓值差異是否有明顯不同，研究者應該使用何種統計方法最合適？
