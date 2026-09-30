@@ -684,13 +684,14 @@ draw=black
     },
 }
 
-\newenvironment{introduction}[1][\ifdefstring{\ELEGANT@lang}{en}{Introduction}{内容提要}]{
+\newenvironment{introduction}[2][\ifdefstring{\ELEGANT@lang}{en}{Introduction}{内容提要}]{
 \begin{tcolorbox}[introduction,title={#1}]
-\begin{multicols}{2}
+\newcommand{\introcol}{#2}
+\ifnum\introcol=1 \else \begin{multicols}{#2} \fi 
 \begin{itemize}[label=\textcolor{structurecolor}{\scriptsize\SquareShadowBottomRight}]
 }{%
 \end{itemize}
-\end{multicols}
+\ifnum\introcol=1 \else \end{multicols} \fi 
 \end{tcolorbox}}
 
 \newenvironment{takehome}[1][\ifdefstring{\ELEGANT@lang}{en}{Take home message}{本章重點}]{

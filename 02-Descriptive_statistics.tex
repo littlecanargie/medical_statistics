@@ -1,7 +1,7 @@
 \chapter{資料型態與描述性統計}
     在資料分析及統計推論前，我們經常需要先對資料有初步的認識，從而決定是否要先對資料做前處理（例如轉換、合併、處理離群值等等），以及應該用什麼統計方法進行分析。當資料量不大的時候，我們可以將資料全部列出來檢視，但隨著資料量的增大，我們就需要依賴描述性統計提取資料的特徵。本章我們將認識生醫資料常見的變數型態，針對這些變數型態有哪些適用的描述性統計量和圖表，以及這些描述性統計量和圖表的基本性質。
     
-    \begin{introduction}[第 \thechapter 章學習目標]
+    \begin{introduction}[第 \thechapter 章學習目標]{1}
         \item 生醫資料的變數常見型態
         \item 常見的描述性統計量和圖表及適用的變數型態
         \item 資料線性轉換對平均值、變異數、標準差的影響
@@ -60,6 +60,8 @@
         \end{center}
     \end{table}
 
+    \vspace{-0.5cm}
+
     根據類別型變項和數字型變項的特性，我們還可以再將它們細分：
 
     \begin{itemize}
@@ -87,13 +89,19 @@
         根據這個定義，攝氏溫度、華氏溫度和克式溫度（Kelvin scale）應該是哪種資料型態？如果一個問卷的題目讓填答者填1到5分的（整數）滿意度，那麼這個題目的答案應該是哪種資料型態？如果疼痛指數是1到10分的整數，那麼它應該是哪種資料型態？
     \end{custom}
 
-    \begin{custom}{思考}
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{120pt}}
+
+    \begin{custom}{動動腦}
         如果資料是一張 X 光片，那麼我們還能把圖像轉成數值型態嗎？更進一步，如果圖像不是黑白的，那麼要怎麼轉成數值型態？
     \end{custom}
 
-    \begin{custom}{思考}
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{120pt}}
+
+    \begin{custom}{動動腦}
         一般來說，資料中的每一個 row 通常代表一筆資料，而不同的 row 通常預設是由不同的病患所貢獻。如果我們現在追蹤一群高血壓病患十年，每三個月追蹤一次（共四十次），並想記錄他們追蹤起始年齡、性別、高血壓家族史及每次追蹤的收縮壓和舒張壓，那麼應該如何記錄資料？
     \end{custom}
+
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{180pt}}
 
     了解變項的資料型態後，我們就可以進一步探討如何選擇並計算描述性統計量，來描述變項的特徵。描述性統計量本質上還是一個參數估計量（請參見第一章），而且是用來估計母體描述性參數的估計量。因此我們要先探討針對各種資料型態的母體，有哪些適用的描述性參數，以及如何用樣本計算出描述性統計量來估計這些參數。
     
@@ -143,12 +151,6 @@
     和類別變項不同的是，數值變項的取值可能性多了許多，而且具有解釋意義。因此數值變項的母體描述性參數相對於類別變項更為多元。針對數值變項，我們能用\textit{直方圖} (histogram) 來視覺化母體的取值狀況，如圖\ref{fig:descriptive_cont}所示。繪製直方圖時，我們先將數值變項依可能取值切割成大小相等的區間，例如圖\ref{fig:descriptive_cont}中我們把取值區間以 0.5 的寬度分成$[10,10.5),[10.5,11),[11,11.5),...,[19.5,20)$，其中 $[a,b)$ 代表 $\ge a$ 但 $<b$ 的區間。而後即可計算落入各區間的觀察值個數並以直條繪製頻率或相對頻率。注意到直方圖和長條圖不同地方在於，直方圖的每個直條之間是\textbf{沒有}間隙的（除非有區間恰好沒有觀察值）、而且不能隨意交換順序，以表明直方圖的各直條代表連續且有序的組別。
 
     \bigskip
-    
-    \begin{custom}{思考}
-        在製作直方圖時，如果區間寬度過大或過小，會對圖造成什麼影響？
-    \end{custom}
-
-    \bigskip
 
     \begin{figure}[htbp]
       \centering
@@ -157,8 +159,16 @@
       \label{fig:descriptive_cont}
     \end{figure}
 
+    \pagebreak
+    
+    \begin{custom}{動動腦}
+        在製作直方圖時，隨著區間寬度變大或變小，每個直條的相對頻率會如何變動？如何讓不同區間寬度的直方圖之間具有可比性？如果區間寬度過大或過小，會對圖面以及直方圖的高度不確定性造成什麼影響？
+    \end{custom}
+
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{160pt}}
+
     \bigskip
-        
+
     以下我們根據圖\ref{fig:descriptive_cont}討論一些常用的描述性參數。
 
 \subsection{位置參數及其描述統計量}
@@ -192,10 +202,18 @@
     雖然中位數雖然的確能夠直指分布的「中心」，但它的統計性質較為複雜，在後續很多的推論統計方法沒有辦法直接適用，因此一般而言我們還是會優先選擇平均值作為我們的位置參數以及描述統計量。另外一個可用的位置參數是 \textit{眾數} (mode)，也就是所有觀察值中出現頻率最高的數值。不過在數值型變項，尤其是連續型變項中，各樣本取值的頻率常常都很低（例如一群人中，體重數值如果取到小數點後一位，那麼每種可能取值的出現次數可能都只有一次），所以實務上不常使用。
 
     \bigskip
+
+    \begin{custom}{動手作}
+        本\href{https://istats.shinyapps.io/sampdist_cont/}{連結}的 APP 收錄了 18,159 位 FIFA19 足球選手的年齡。全員的平均年齡，也就是母體平均，為 25.1 歲。請用本 APP 隨機抽出 5 位選手的年齡並計算樣本平均，總共作 20 次。請將算出的樣本平均數值與母體平均做比較。
+    \end{custom}
+
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{160pt}}
     
-    \begin{custom}{思考}
+    \begin{custom}{動動腦}
         如果某個變項在收集的過程中，已經先行將連續的變項分割為多個區間，並且記錄區間的頻率（例如 10-20 歲多少人、20-30 歲多少人、40-50 歲多少人），那麼我們還有辦法對該變項計算位置相關的描述統計量嗎？
     \end{custom}
+
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{160pt}}
 
 \subsection{分散參數及其描述統計量}
     除了位置參數以外，我們看到 A 和 B 兩個變項的母體平均值和中位數均為 15 ，但是 B 的可能取值跨度明顯地比 A 還要小。換句話說，相對於 A，B 的取值比較常落在離平均值比較近的位置。用來描述這個分布特性的參數稱為分散參數 (dispersion parameter)。
@@ -216,6 +234,13 @@
       \caption{估計母體變異數的低估問題}
       \label{fig:degrees_of_freedom}
     \end{figure}
+
+    \begin{custom}{動手作}
+        在前面足球選手的例子中，年齡的母體變異數大約為 21.81 年$^2$。請用 $n-1 = 4$ 以及 $n = 5$ 當分母計算每組樣本的樣本變異數，並將這些樣本變異數與母體變異數相比較。
+    \end{custom}
+
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{160pt}}
+
 
     變異數雖然是一個很好用的分散參數，但如果仔細思考它的定義，會發現因為它是對「取值和母體平均之差值」的平方取平均，所以變異數的單位會是該變項單位的平方。例如，如果變項是收縮壓，單位是mmHg，那麼變異數的單位就會是$\text{mmHg}^2$，造成我們解釋上的困難（想像如何解釋 $100\text{mmHg}^2$！）。因此，我們再定義一個變異數的開根號為\textit{標準差} (standard deviation)，作為一個新的分散參數。母體標準差通常寫作$\sigma_X$，其符號定義如下：
     \[\sigma_X = \sqrt{\frac{(\tilde{X}_1-\mu_X)^2+(\tilde{X}_2-\mu_X)^2+\cdots+(\tilde{X}_N-\mu_X)^2}{N}} = \sqrt{\frac{1}{N} \sum_{i=1}^N (\tilde{X}_i-\mu_X)^2}\]
@@ -252,11 +277,11 @@
     \end{array}\right.\]
     第一、第二、第三四分位分別為變項的第 25、50、75 百分位數，而四分位差的定義則為第三四分位與第一四分位的差。由此可以看到，四分位差不會受到數值最大和最小 25$\%$ 資料的影響，對於極端值較不敏感。因此在實務上，如果資料分布有較多的極端值，如圖\ref{fig:descriptive_cont}中的C和D，可以考慮以四分位差取代標準差作為分散程度的指標。
 
-    \bigskip
-
-    \begin{custom}{思考}
+    \begin{custom}{動動腦}
         如果對資料作線性的放大平移，那麼中位數、全距和四分位差應該會如何變動？
     \end{custom}
+
+    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{100pt}}
 
 \subsection{數值變項的描述性統計圖表}
     除了前面提到的直方圖外，另一種常用來描述連續變項分布的圖表是\textit{盒形圖} (boxplot) 或\textit{盒鬚圖} (box-and-whisker plot)，如圖\ref{fig:boxplot_stem}的左圖。盒鬚圖的好處是可以在有限的空間中描繪資料的中心、分散度、偏度以及可能的\textit{離群值} (outlier)。盒鬚圖分成三部分：盒子、鬍鬚和代表離群值的圓點。盒子的部分代表變項取值的主要範圍，上下分別為變項的第三四分位 (Q3) 和第一四分位 (Q1)，而中間的線段代表中位數 (M)。圓點的部分代表離群值，常見的離群值定義以四分位差 (IQR) 作為分散程度的標準：取值若落在 Q3 + 1.5 IQR 以及 Q1 - 1.5 IQR 以外，則標記為離群值。最後鬍鬚的部分則畫出非離群值之取值範圍，因此上限(U)為不大於 Q3 + 1.5 IQR 的最大觀察值，而下限(L)為不小於 Q1 - 1.5 IQR 的最小觀察值。盒鬚圖中間的小菱形並非必要，若有畫上則通常代表平均值。
@@ -267,11 +292,11 @@
         \centering
         \begin{minipage}{.5\textwidth}
             \centering
-            \includegraphics[width=0.9\textwidth]{figures/02-Descriptive_statistics/boxplot.png}
+            \includegraphics[width=0.8\textwidth]{figures/02-Descriptive_statistics/boxplot.png}
         \end{minipage}%
         \begin{minipage}{.5\textwidth}
             \centering
-            \includegraphics[width=0.9\textwidth]{figures/02-Descriptive_statistics/stem_and_leaf.png}
+            \includegraphics[width=0.8\textwidth]{figures/02-Descriptive_statistics/stem_and_leaf.png}
         \end{minipage}
         \caption{盒鬚圖與莖葉圖}
         \label{fig:boxplot_stem}
@@ -282,6 +307,18 @@
     \begin{custom}{思考}
         直方圖和盒鬚圖各自提供了哪些對方所沒有的資訊？是否有可能將兩者合併？
     \end{custom}
+
+    \bigskip
+
+    \begin{takehome}
+        \item 類別變項與數值變項是生物醫學資料中兩種最主要的變數類型。
+        \item 具有兩個層次的類別變項又稱為二元變項，以 0 代表參照層次，以 1 代表另一個層次。
+        \item 描述統計量是母體描述參數的估計量。
+        \item 位置參數與分散參數是數值變項中最重要的兩類母體描述參數。
+        \item 對於右偏分布，平均值通常大於中位數；對於左偏分布，平均值通常小於中位數。
+        \item 位置參數會隨變數的線性轉換而縮放與平移，而分散參數則僅會縮放。
+        \item 經驗法則「68–95–99.7 法則」：約有 68\% / 95\% / 99.7\% 的母體數值落在距平均值 1 / 2 / 3 個標準差的範圍之內。
+    \end{takehome}
 
     \begin{docexam}{（104-1醫學(一)）}
         下列那個測量值較不易受到資料極端值的影響？
