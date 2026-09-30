@@ -26,7 +26,7 @@
     \smallskip
     \[\bar{X} \sim \NN\Big(\mu, \frac{5^2}{36}\Big)\]
     \smallskip
-    此時將 $\bar{X}$ 作 z 轉換，就可以得到一個服從標準常態分布的量：
+    此時將 $\bar{X}$ 作 $z$ 分數轉換，就可以得到一個服從標準常態分布的量：
     \smallskip
     \[\frac{\bar{X} - \mu}{5/\sqrt{36}} \sim \ZZ\]
     \smallskip
@@ -60,7 +60,7 @@
 
     \medskip
     
-    前面我們用了一些實際數字來演示信賴區間的建構方法。若利用符號作一般性推導，假設母體來自於已知標準差為 $\sigma$ 的常態分佈，且 $\bar{X}$ 為樣本數 $n$ 的樣本得出之樣本平均，則母體平均值的 $(1-\alpha) \times 100\%$ 雙尾信賴區間可寫為
+    前面我們用了一些實際數字來演示信賴區間的建構方法。若利用符號作一般性推導，假設母體來自於已知標準差為 $\sigma$ 的常態分布，且 $\bar{X}$ 為樣本數 $n$ 的樣本得出之樣本平均，則母體平均值的 $(1-\alpha) \times 100\%$ 雙尾信賴區間可寫為
     \smallskip
     \[\Big(\bar{X}-z_{\alpha/2}\frac{\sigma}{\sqrt{n}},  \bar{X} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\Big)\]
     \smallskip
@@ -79,7 +79,7 @@
        假設已知 60 歲以上國人血清低密度脂蛋白的濃度標準差為 10 mg/dL，且呈現常態分布。現隨機選取 400 位 60 歲以上的志願者抽血，得到血清低密度脂蛋白的平均濃度為 93 mg/dL。請問 60 歲以上國人平均血清低密度脂蛋白濃度的95\%、90\% 與 100 \% 雙尾信賴區間為何？
     \end{custom}
 
-    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{200pt}}
+    \answerbox{200pt}
 
     \bigskip
 
@@ -87,7 +87,7 @@
         我們在前面推導 $95\%$ 信賴區間時，先針對標準常態分布建立了一個對稱於 $0$ 、機率恰為 $95\%$ 的區間 $(-z_{0.025}, z_{0.025})$。如果不要求該區間對稱於 $0$，是否還有其他符合機率的區間？這些區間對應的信賴區間會是什麼形式？如果允許該區間沒有上界或沒有下界，對應的信賴區間會變成什麼形式？在所有雙尾信賴區間（有上下界的信賴區間）中，為什麼會預設使用「相對於樣本平均對稱」的建構方法？
     \end{custom}
 
-    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{350pt}}
+    \answerbox{350pt}
 
     \bigskip
 
@@ -115,7 +115,7 @@
         某大型醫療體系對員工進行血糖抽檢，隨機抽檢 160 人後發現，有 12 員工呈現空腹血糖過高的現象。請問該體系員工空腹血糖過高比率之 95\% 信賴區間為何？
     \end{custom}
 
-    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{180pt}}
+    \answerbox{180pt}
 
     \bigskip
 
@@ -123,7 +123,7 @@
         某民調公司希望藉由隨機電訪了解民眾對於 A 總統的支持度。若民調公司希望無論調查結果如何，最後建構出之支持度 95\% 雙尾信賴區間均不寬於上下 3\% （也就是總寬度不超過 6\%），且暫不考慮拒答的問題，那麼至少應收回多少有效電訪樣本？
     \end{custom}
 
-    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{220pt}}
+    \answerbox{220pt}
 
     \bigskip
 
@@ -152,7 +152,7 @@
 
     \medskip
     
-    $t$ 分布的機率密度函數如圖\ref{fig:student}所示。可以看到相對於標準常態分佈（黑色粗線） 而言，$t$ 分布的分布比較分散，雙尾比較厚重。但是隨著自由度 $\nu$ 上升，$t$ 分布的形狀會越來越接近標準常態分佈。事實上，當自由度 $\nu > 30$ 時，一般認為 $t$ 分布可以直接用標準常態分佈來近似。針對 $t$ 分布，我們也有 \href{https://en.wikipedia.org/wiki/Student%27s_t-distribution}{$t$分布表}可以查詢其曲線下面積。
+    $t$ 分布的機率密度函數如圖\ref{fig:student}所示。可以看到相對於標準常態分布（黑色粗線） 而言，$t$ 分布的分布比較分散，雙尾比較厚重。但是隨著自由度 $\nu$ 上升，$t$ 分布的形狀會越來越接近標準常態分布。事實上，當自由度 $\nu > 30$ 時，一般認為 $t$ 分布可以直接用標準常態分布來近似。針對 $t$ 分布，我們也有 \href{https://en.wikipedia.org/wiki/Student%27s_t-distribution}{$t$分布表}可以查詢其曲線下面積。
 
     \begin{figure}[htbp]
         \centering
@@ -176,7 +176,7 @@
     \smallskip
     因此，母體為常態分布下的母體平均值 $(1-\alpha)\times 100\%$ 信賴區間可以寫為
     \[\Big(\bar{X}-t_{n-1, \alpha/2}\frac{s}{\sqrt{n}},  \bar{X} + t_{n-1, \alpha/2}\frac{s}{\sqrt{n}}\Big)\]
-    可以看到，用 $t$ 分布建構的信賴區間和常態分布建構的信賴區間，基本上只差在臨界值改成查 $t_{n-1}$ 的表、以及標準差由母體標準差改為樣本標準差。前面我們提到 $t$ 分布都比標準常態分佈來得寬，所以 $t_{n-1, \alpha/2}$ 會比 $z_{\alpha/2}$ 來得大，也就是 $t$ 分布建構的信賴區間比常態分布建構的信賴區間來得寬。用類似的推導也可以得到右尾和左尾的 $(1-\alpha)\times 100\%$ 信賴區間分別可以寫為
+    可以看到，用 $t$ 分布建構的信賴區間和常態分布建構的信賴區間，基本上只差在臨界值改成查 $t_{n-1}$ 的表、以及標準差由母體標準差改為樣本標準差。前面我們提到 $t$ 分布都比標準常態分布來得寬，所以 $t_{n-1, \alpha/2}$ 會比 $z_{\alpha/2}$ 來得大，也就是 $t$ 分布建構的信賴區間比常態分布建構的信賴區間來得寬。用類似的推導也可以得到右尾和左尾的 $(1-\alpha)\times 100\%$ 信賴區間分別可以寫為
     \[\Big(-\infty,  \bar{X} + t_{n-1, \alpha}\frac{s}{\sqrt{n}}\Big), \;\;\Big(\bar{X}-t_{n-1, \alpha}\frac{s}{\sqrt{n}},  \infty\Big)\]
 
     \bigskip
@@ -185,7 +185,7 @@
         假設已知 60 歲以上國人血清低密度脂蛋白的濃度呈現常態分布。現隨機選取 16 位 60 歲以上的志願者抽血，得到血清低密度脂蛋白的平均濃度為 93 mg/dL，樣本標準差為 9 mg/dL。請問 60 歲以上國人平均血清低密度脂蛋白濃度的 (1) 雙尾 95\% 信賴區間為何？ (2) 右尾 90\% 信賴區間為何？
     \end{custom}
 
-    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{300pt}}
+    \answerbox{300pt}
 
     \begin{takehome}
         \item 區間估計同時提供未知參數的近似位置與不確定性。
@@ -193,11 +193,11 @@
         \item $t$ 分布有一個參數，即自由度 $\nu$。
         \begin{itemize}
             \item 當自由度較小時，$t$ 分布的尾巴比標準常態分布來得厚
-            \item 當自由度增大（例如，$>30$）時，$t$ 分布趨近於標準常態分配
+            \item 當自由度增大（例如，$>30$）時，$t$ 分布趨近於標準常態分布
         \end{itemize}
         \item 當母體服從常態分布時，母體平均的雙側\textit{精確} $(1-\alpha) \times 100\%$ 信賴區間為
         \[\Bigg(\bar{X} - t_{n-1, \alpha/2} \frac{s}{\sqrt{n}}, \bar{X} + t_{n-1, \alpha/2} \frac{s}{\sqrt{n}}\Bigg)\]
-        \item 當母體不服從常態分配但樣本數較大時，母體平均的雙側\textit{近似} $(1-\alpha) \times 100\%$ 信賴區間可建構為
+        \item 當母體不服從常態分布但樣本數較大時，母體平均的雙側\textit{近似} $(1-\alpha) \times 100\%$ 信賴區間可建構為
         \[\Bigg(\bar{X} - z_{\alpha/2} \sqrt{\frac{\hat{\sigma}^2}{n}}, \bar{X} + z_{\alpha/2} \sqrt{\frac{\hat{\sigma}^2}{n}}\Bigg)\]
         其中 $\hat{\sigma}^2$ 為母體變異數的估計量。
     \end{takehome}

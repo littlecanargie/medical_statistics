@@ -18,7 +18,7 @@
     \smallskip
     \[\bar{X}_2-\bar{X}_1 \sim \NN \Big(\mu_2 - \mu_1, \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}\Big)\]
     \smallskip
-    由於 $\bar{X}_2-\bar{X}_1$ 服從常態分布，我們可以將其做 $z$ 轉換，轉換後即服從標準常態分布
+    由於 $\bar{X}_2-\bar{X}_1$ 服從常態分布，我們可以將其做 $z$ 分數轉換，轉換後即服從標準常態分布
     \smallskip
     \[\frac{(\bar{X}_2-\bar{X}_1)-(\mu_2-\mu_1)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim \ZZ\]
     \smallskip
@@ -43,7 +43,7 @@
         \end{center}
     \end{table}
 
-    除了進行檢定外，我們也可以根據 $\bar{X}_2 - \bar{X}_1$ 作 $z$ 轉換後的抽樣分布，建構母體平均差 $\mu_2 - \mu_1$ 的信賴區間。以 $(1-\alpha) \times 100\%$ 雙尾信賴區間為例，因為 $\frac{(\bar{X}_2-\bar{X}_1)-(\mu_2-\mu_1)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim \ZZ$，
+    除了進行檢定外，我們也可以根據 $\bar{X}_2 - \bar{X}_1$ 作 $z$ 分數轉換後的抽樣分布，建構母體平均差 $\mu_2 - \mu_1$ 的信賴區間。以 $(1-\alpha) \times 100\%$ 雙尾信賴區間為例，因為 $\frac{(\bar{X}_2-\bar{X}_1)-(\mu_2-\mu_1)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim \ZZ$，
     \smallskip
     \[\PP\Bigg(-z_{\alpha/2} < \frac{(\bar{X}_2-\bar{X}_1)-(\mu_2-\mu_1)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} < z_{\alpha/2}\Bigg) = 1-\alpha\]
     \[\PP\Bigg[(\bar{X}_2-\bar{X}_1) - z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}} < \mu_2-\mu_1  < (\bar{X}_2-\bar{X}_1) + z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}\Bigg] = 1-\alpha\]
@@ -60,7 +60,7 @@
     
 \section{母體平均的獨立雙樣本檢定：兩個母體均為常態分布但變異數未知}
 
-    上一節我們假設了兩個母體均為常態分布且變異數均已知，因此可以將樣本平均的差 $\bar{X}_2-\bar{X}_1$ 進行 $z$ 轉換，且得到在兩母體平均相等（$H_0: \mu_1 = \mu_0$）的虛無假說下
+    上一節我們假設了兩個母體均為常態分布且變異數均已知，因此可以將樣本平均的差 $\bar{X}_2-\bar{X}_1$ 進行 $z$ 分數轉換，且得到在兩母體平均相等（$H_0: \mu_1 = \mu_0$）的虛無假說下
     \smallskip
     \[Z := \frac{\bar{X}_2-\bar{X}_1}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim \ZZ\]
     \smallskip
@@ -126,7 +126,7 @@
        某藥廠為比較其開發之新血壓藥 A 與鈣離子通道阻斷劑降低舒張壓之能力，將 36 名高血壓病患隨機分派至新血壓藥組與鈣離子通道阻斷劑組，各為 18 位。一個月後，新血壓藥 A 之病患平均舒張壓與標準差為 85 mmHg (5.1 mmHg)，鈣離子通道阻斷劑之病患平均舒張壓與標準差為 82 mmHg (4.9 mmHg)。假設各組治療後糖化血色素之分布均為常態分布且母體變異相同，在顯著水準設定為 0.05 下，新血壓藥 A 之舒張壓下降效果是否鈣離子通道阻斷劑來得好？
     \end{custom}
 
-    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{150pt}}
+    \answerbox{150pt}
     
     \bigskip
 
@@ -134,7 +134,7 @@
        為了解非潰瘍性消化不良患者是否應使用制酸劑或H2受體拮抗劑治療，Nyrén 等人設計了一個雙盲、隨機、安慰劑對照試驗。該試驗召集了 159 名患有慢性上腹痛且無器質性病變的非潰瘍性消化不良患者，並將病患隨機分派至三組，每組均給予胃乳包（三餐飯後與睡前）與錠劑（每日兩次）並治療三週：54位被分到制酸劑組，其胃乳包含有氫氧化鋁、氫氧化鎂與碳酸鎂；51 位被分到 Cimetidine組，其錠劑含有 400 毫克的 H2 受體拮抗劑 Cimetinine；51 位被分到安慰劑組，其胃乳和錠劑均為安慰劑。(Nyrén et al. (1986). Absence of therapeutic benefit from antacids or cimetidine in non-ulcer dyspepsia. New England Journal of Medicine, 314(6), 339-343.)。在試驗開始前，各組病患的最大胃酸分泌量平均值及標準差分別為（以 $\mu$mol/min 為單位）：制酸劑組$317.3 \pm 142.7$、Cimetidine組 $328.6 \pm 159.8$、安慰劑組$317.5 \pm 136.1$。請利用檢定說明制酸劑組-安慰劑組與 Cimetidine 組-安慰劑組間的初始最大胃酸分泌量母體平均是否不同，並說明檢定之結論。
     \end{custom}
 
-    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{480pt}}
+    \answerbox{480pt}
 
     \bigskip
 
@@ -142,7 +142,7 @@
        GLP-1 agonist 與 SGLT2 inhibitor 為控制糖尿病的兩大類藥物。Frías 等人為了解比較同時使用兩種藥物與單用一種藥物的血糖降低效果，將 695 位使用 Metformin 治療但血糖控制不佳的第二型糖尿病病患隨機分派至三種治療（括號內為實際完成並納入分析之病患人數）：Exenatide 合併 Dapagliflozin (n=193)、單用Exenatide (n=184)、以及單用 dapagliflozin (n=196) (Frías et al. (2016). Exenatide once weekly plus dapagliflozin once daily versus exenatide or dapagliflozin alone in patients with type 2 diabetes inadequately controlled with metformin monotherapy (DURATION-8): a 28 week, multicentre, double-blind, phase 3, randomised controlled trial. The lancet Diabetes \& endocrinology, 4(12), 1004-1016.)。其中 Exenatide 為 GLP-1 agonist、Dapagliflozin 為 SGLT2 inhibitor。治療前三組之平均糖化血色素均為 9.3\%，治療後三組各別之平均糖化血色素與標準差分別為 7.2\% (1.3\%)、7.6\% (1.3\%) 與 7.7\% (1.1\%)。假設各組治療後糖化血色素之分布均為常態分布且母體變異相同，在顯著水準設定為 0.05 下，合併使用藥物之血糖下降效果是否與單用 GLP-1 agonist 有差異，差異之信賴區間為何？合併使用藥物之血糖下降效果是否與單用 SGLT2 inhibitor 有差異，差異之信賴區間為何？
     \end{custom}
 
-    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{420pt}}
+    \answerbox{420pt}
 
     \bigskip
 
@@ -150,7 +150,7 @@
        為了解 PCSK9 抑制劑 Inclisiran 對同合子家族性高膽固醇血症 (HoFH) 的治療效果，研究者發起了一個第三期隨機分派臨床試驗 ORION-13，其中有部分試驗乃採雙盲形式 (Wiegman et al. (2025). Efficacy and safety of inclisiran in adolescents with genetically confirmed homozygous familial hypercholesterolemia: results from the double-blind, placebo-controlled part of the ORION-13 randomized trial. Circulation, 151(25), 1758-1766.)。在雙盲的部分，試驗研究對象為患有 HoFH 的 12 至 18 歲青少年，並以 2:1 的比例隨機分派至 Inclisiran 組（n=9）或安慰劑組（n=4）。為量化藥物降低血清 LDL-C 濃度的效果，研究者將患者在追蹤 330 天之血清 LDL-C 相對於初始值的變化比例(即相減除以初始值)作為試驗的主要終點。結果顯示 Inclisiran 組之平均變化比例與標準差為 −21.0\% $\pm$ 15.1\%，安慰劑組則為 +13.0\% $\pm$ 41.9\% 。根據此數據，請用檢定說明 Inclisiran 是否有降低血清 LDL-C 之療效，並對該療效的大小建立 $95\%$ 雙尾信賴區間。
     \end{custom}
 
-    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{420pt}}
+    \answerbox{420pt}
 
     \pagebreak
 
@@ -186,7 +186,7 @@
     \smallskip
     \[\hat{p}_2 - \hat{p}_1 \xrightarrow[]{d} \NN\Big(p_2 - p_1, \frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}\Big)\]
     \smallskip
-    在虛無假說為 $H_0 : p_2 = p_1 = \bar{p}$，也就是兩組樣本之母體比例相等的情況下，我們可以對 $\hat{p}_2 - \hat{p}_1$ 作 $z$ 轉換並得到
+    在虛無假說為 $H_0 : p_2 = p_1 = \bar{p}$，也就是兩組樣本之母體比例相等的情況下，我們可以對 $\hat{p}_2 - \hat{p}_1$ 作 $z$ 分數轉換並得到
     \smallskip
     \[Z:=\frac{\hat{p}_2 - \hat{p}_1}{\sqrt{\bar{p}(1-\bar{p})\big(\frac{1}{n_1} + \frac{1}{n_2}\big)}} \xrightarrow[]{d} \ZZ\]
     \smallskip
@@ -213,7 +213,7 @@
         \end{center}
     \end{table}
 
-    除了進行檢定外，我們也可以根據 $\hat{p}_2 - \hat{p}_1$ 作 $z$ 轉換後的抽樣分布，建構母體比例差值 $p_2 - p_1$ 的信賴區間。以 $(1-\alpha) \times 100\%$ 雙尾信賴區間為例，因為 $\frac{(\hat{p}_2-\hat{p}_1)-(p_2-p_1)}{\sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}} \sim \ZZ$，
+    除了進行檢定外，我們也可以根據 $\hat{p}_2 - \hat{p}_1$ 作 $z$ 分數轉換後的抽樣分布，建構母體比例差值 $p_2 - p_1$ 的信賴區間。以 $(1-\alpha) \times 100\%$ 雙尾信賴區間為例，因為 $\frac{(\hat{p}_2-\hat{p}_1)-(p_2-p_1)}{\sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}} \sim \ZZ$，
     \smallskip
     \[\PP\Bigg(-z_{\alpha/2} < \frac{(\hat{p}_2-\hat{p}_1)-(p_2-p_1)}{\sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}} < z_{\alpha/2}\Bigg) = 1-\alpha\]
     \[\PP\Bigg[(\hat{p}_2-\hat{p}_1) - z_{\alpha/2} \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}} < p_2-p_1  < (\hat{p}_2-\hat{p}_1) + z_{\alpha/2} \sqrt{\frac{p_1(1-_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}\Bigg] = 1-\alpha\]
@@ -235,12 +235,12 @@
         對於傳統治療反應不佳潰瘍性大腸炎患者，靜脈注射 Olamkicept 是否能夠增加臨床反應率？為了解此問題，Zhang 等人將 88 名患者隨機分配至 Olamkicept 每兩週 600mg (29 名)、Olamkicept 每兩週 300mg (30 名) 與安慰劑 (29 名)三組，並治療十二週 (Zhang et al. (2023). Effect of induction therapy with olamkicept vs placebo on clinical response in patients with active ulcerative colitis: a randomized clinical trial. Jama, 329(9), 725-734.)。治療後，三組分別有 17、13、和 10 位病患出現臨床反應。研究者欲了解三組的臨床反應率是否相同。請將顯著水準設為 0.1，各別比較兩組 Olamkicept 組之反應率是否與安慰劑組不同，並闡述檢定之結論。另外，請建立兩種 Olamkicept 劑量之反應率相對於安慰劑之差異的雙尾 $95\%$ 信賴區間。
     \end{custom}
 
-    \medskip\noindent\framebox[\textwidth]{\rule{0pt}{300pt}}
+    \answerbox{300pt}
     
     \bigskip 
 
     \begin{takehome}
-        \item 若要比較兩組常態分配樣本的母體平均數（且母體變異數未知），首先需判斷兩組樣本是否為配對樣本。
+        \item 若要比較兩組常態分布樣本的母體平均數（且母體變異數未知），首先需判斷兩組樣本是否為配對樣本。
         \begin{itemize}
             \item 配對樣本：採用配對 $t$ 檢定，即對每位受試者的組內差異進行單樣本 $t$ 檢定。
             \item 獨立樣本：選擇何種檢定方法，取決於我們是否願意假設兩母體的變異數相等。

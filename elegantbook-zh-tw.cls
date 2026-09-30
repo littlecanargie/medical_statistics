@@ -89,7 +89,9 @@
 
 \PassOptionsToPackage{no-math}{fontspec}
 \ifdefstring{\ELEGANT@lang}{cn}{
-\RequirePackage[UTF8, scheme=plain]{ctex}
+% fontset=fandol: ctex's OS-specific defaults need system fonts (e.g. SimHei on Windows);
+% Fandol ships with TeX Live, and every CJK family actually used is set explicitly below.
+\RequirePackage[UTF8, scheme=plain, fontset=fandol]{ctex}
 \setCJKmainfont[ItalicFont=AR PL UKai TW, BoldFont=cwTeXHeiBold]{AR PL UMing TW MBE}
 \setCJKfamilyfont{hei}{WenQuanYi Micro Hei Mono}
 \setCJKfamilyfont{kai}{AR PL UKai TW}
@@ -100,6 +102,9 @@
 \RequirePackage{ifxetex}
 
 \RequirePackage{newtxtext}
+% Newer newtxtext sets \defaultfontfeatures (e.g. Extension=.otf), which would leak into
+% the lazily loaded CJK families above (kai/hei) and break their font lookup.
+\defaultfontfeatures{Ligatures=TeX}
 \RequirePackage{anyfontsize}
 \ifdefstring{\ELEGANT@math}{newtxmath}{
 \RequirePackage{newtxmath}
@@ -265,6 +270,7 @@
 
 \RequirePackage{graphicx}
 %\RequirePackage{enumerate}
+\let\Bbbk\relax % newer newtxmath also defines \Bbbk, which amssymb would redefine
 \RequirePackage{amsmath,mathrsfs,amsfonts,amssymb}
 \RequirePackage{booktabs}
 \RequirePackage{multicol,multirow}
@@ -655,9 +661,12 @@ draw=black
 \newenvironment{property}{\par\noindent\textbf{\color{third}%
 	\ifdefstring{\ELEGANT@lang}{en}{Property}{性質}\;
 }}{\par}
-\newenvironment{custom}[1]{\par\noindent\textbf{\color{third}
+% \samepage: never break a question's text across pages
+\newenvironment{custom}[1]{\par\samepage\noindent\textbf{\color{third}
 	\ifdefstring{\ELEGANT@lang}{en}{#1}{#1}\,
 }}{\par}
+% Blank answer space of height #1 after a custom question, kept on the same page as the question
+\newcommand{\answerbox}[1]{\par\nopagebreak\medskip\noindent\framebox[\textwidth]{\rule{0pt}{#1}}\par}
 \newenvironment{docexam}[1]{\bigskip
 
         \par\noindent\textbf{\color{third}
@@ -741,7 +750,8 @@ draw=black
 
 
 \ifdefstring{\ELEGANT@base}{show}{
-	\fancyfoot[c]{\catcode`\$=3\relax\base{structurecolor}{88}}
+	% \parbox: fancyhdr >= 4 sets footers in horizontal mode, where \base's \nointerlineskip fails
+	\fancyfoot[c]{\parbox{\linewidth}{\catcode`\$=3\relax\base{structurecolor}{88}}}
 	\if@twoside
 	\fancyhead[ER,OL]{\color{structurecolor}\ifdefstring{\ELEGANT@lang}{en}{\itshape}{\kaishu}--\;\thepage/\pageref*{LastPage}\;--}
 	\fancyhead[EL]{\color{structurecolor}\ifdefstring{\ELEGANT@lang}{en}{\itshape}{\kaishu}\leftmark}
