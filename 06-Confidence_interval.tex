@@ -43,7 +43,7 @@
         \PP\Big(\mu \in \Big(\bar{X}-z_{0.025}\cdot \frac{5}{\sqrt{36}},  \bar{X} + z_{0.025}\cdot \frac{5}{\sqrt{36}}\Big)\Big) &= 0.95
     \end{align*}
     \smallskip
-    上述的式子代表，在母體服從 $\NN(\mu, 5^2)$ 的假設下，如果我們不斷抽取 36 位學生，並把每次得到的平均身高 $\bar{X}$ 都拿來算出一個區間 $\big(\bar{X}-z_{0.025}\cdot \frac{5}{\sqrt{36}},  \bar{X} + z_{0.025}\cdot \frac{5}{\sqrt{36}}\big)$，那麼這個區間覆蓋到 $\mu$ 的機率為 $95\%$。以圖\ref{fig:confidence_interval}為例，當$\mu = 160$時，重複抽取 36 人 200 次得到的 200 個區間中，僅有 10 個未蓋到 $160$ （在圖中以紅色標示），即蓋到的機率為 $190/200 = 95\%$。區間計算方式滿足上述性質時，我們稱\textbf{$\big(\bar{X}-z_{0.025}\cdot \frac{5}{\sqrt{36}},  \bar{X} + z_{0.025}\cdot \frac{5}{\sqrt{36}}\big)$是$\mu$ 的 95\% 信賴區間}。而因為這個信賴區間同時具有上下限，我們也常稱這種信賴區間為\textit{雙尾信賴區間}。
+    上述的式子代表，在母體服從 $\NN(\mu, 5^2)$ 的假設下，如果我們不斷抽取 36 位學生，並把每次得到的平均身高 $\bar{X}$ 都拿來算出一個區間 $\big(\bar{X}-z_{0.025}\cdot \frac{5}{\sqrt{36}},  \bar{X} + z_{0.025}\cdot \frac{5}{\sqrt{36}}\big)$，那麼這個區間覆蓋到 $\mu$ 的機率為 $95\%$。以圖\ref{fig:confidence_interval}為例，當$\mu = 160$時，重複抽取 36 人 200 次得到的 200 個區間中，僅有 10 個未蓋到 $160$（在圖中以紅色標示），覆蓋的比例為 $190/200 = 95\%$，與理論上的覆蓋機率相符。區間計算方式滿足上述性質時，我們稱\textbf{$\big(\bar{X}-z_{0.025}\cdot \frac{5}{\sqrt{36}},  \bar{X} + z_{0.025}\cdot \frac{5}{\sqrt{36}}\big)$是$\mu$ 的 95\% 信賴區間}。而因為這個信賴區間同時具有上下限，我們也常稱這種信賴區間為\textit{雙尾信賴區間}。
     
     \begin{figure}[htbp]
         \centering
@@ -91,7 +91,7 @@
 
     \bigskip
 
-    若母體並非來自常態分布，平均值信賴區間的建構較不直觀。然而，當樣本數夠大時，我們還有一個重要的法寶：中央極限定理！舉例來說，在前一章我們提到了民調詢問支持率的例子：如果把每個人支持與否紀錄為 $1$ 和 $0$，那麼每個人的回答就來自於機率參數為支持率 $p$ 的白努利分布，而 $n$ 位受訪者的經驗支持率 $\hat{p}$ 相當於從該白努力分布抽取樣本數為 $n$ 的樣本而算出的樣本平均。根據中央極限定理：
+    若母體並非來自常態分布，平均值信賴區間的建構較不直觀。然而，當樣本數夠大時，我們還有一個重要的法寶：中央極限定理！舉例來說，在前一章我們提到了民調詢問支持率的例子：如果把每個人支持與否紀錄為 $1$ 和 $0$，那麼每個人的回答就來自於機率參數為支持率 $p$ 的白努利分布，而 $n$ 位受訪者的經驗支持率 $\hat{p}$ 相當於從該白努利分布抽取樣本數為 $n$ 的樣本而算出的樣本平均。根據中央極限定理：
     \smallskip
     \[\hat{p} \leadsto \NN\Big(p, \frac{p(1-p)}{n}\Big)\]
     \smallskip
@@ -140,7 +140,7 @@
     \smallskip
     \[\frac{\bar{X}-\mu}{s/\sqrt{n}} \sim t_{n-1}\]
     \smallskip
-    其中 $t_{n-1}$ 被稱為 student $t$ 分布（這裡如果 $t$ 能夠大寫代表隨機變數的確比較不容易混淆，但是統計學界的習慣都寫小寫）。下標的 $n-1$ 是 $t$ 分布唯一的參數，被稱為\textit{自由度} (degrees of freedom)。這個自由度的由來可以看成是分母在計算樣本標準差時，使用的樣本數減去估計的參數個數，因此是 $n$ 個樣本減掉估計了一個樣本平均，總自由度為 $n-1$。Gosset 當時所在的 Guinness 酒廠不允許他用本名發表該分布的論文，所以他使用了 student 這個化名（如圖 \ref{fig:student_biometrika} 所示），進而使 student 變成該分布的正式名稱。有興趣的讀者請參考以下\href{https://www.youtube.com/watch?v=qWDEzMgLbNY}{連結}。
+    其中 $t_{n-1}$ 被稱為 student $t$ 分布（這裡如果 $t$ 能夠大寫代表隨機變數的確比較不容易混淆，但是統計學界的習慣都寫小寫）。下標的 $n-1$ 是 $t$ 分布唯一的參數，被稱為\textit{自由度} (degrees of freedom)，一般記為 $\nu$。這個自由度的由來可以看成是分母在計算樣本標準差時，使用的樣本數減去估計的參數個數，因此是 $n$ 個樣本減掉估計了一個樣本平均，總自由度為 $n-1$。Gosset 當時所在的 Guinness 酒廠不允許他用本名發表該分布的論文，所以他使用了 student 這個化名（如圖 \ref{fig:student_biometrika} 所示），進而使 student 變成該分布的正式名稱。有興趣的讀者請參考以下\href{https://www.youtube.com/watch?v=qWDEzMgLbNY}{連結}。
 
     \begin{figure}[htbp]
         \centering
@@ -163,21 +163,21 @@
 
     回到我們建構信賴區間的目標，現在我們知道 $\frac{\bar{X}-\mu}{s/\sqrt{n}}$ 服從一個已知的 $t_{n-1}$ 分布，因此它又是一個樞紐量。我們可以參考前面的推導過程，先從以下的等式出發，針對 $t_{n-1}$ 建構出一個以 $0$ 為中心左右對稱，且機率為 $(1-\alpha)\times 100\%$ 的區間：
     \smallskip
-     \[\PP(-t_{n-1, \alpha/2} < t_{n-1} < t_{n-1, \alpha/2}) = \alpha\]
+     \[\PP(-t_{n-1, \alpha/2} < t_{n-1} < t_{n-1, \alpha/2}) = 1-\alpha\]
     \smallskip
     其中 $t_{\nu, p}$ 代表滿足 $\PP(t_{\nu} > t_{\nu, p}) = p$的數值，可以用查表得到。根據前面的分布，我們可以推出：
     \smallskip
     \begin{align*}
-        \PP\Big(-t_{n-1, \alpha/2} < \frac{\bar{X} - \mu}{s/\sqrt{n}} < t_{n-1, \alpha/2}\Big) &= \alpha\\
-        \PP\Big(-t_{n-1, \alpha/2}\frac{s}{\sqrt{n}} < \bar{X} - \mu < t_{n-1, \alpha/2}\frac{s}{\sqrt{n}}\Big) &= \alpha\\
-        \PP\Big(\bar{X}-t_{n-1, \alpha/2}\frac{s}{\sqrt{n}}< \mu < \bar{X} + t_{n-1, \alpha/2}\frac{s}{\sqrt{n}}\Big) &= \alpha\\
-        \PP\Big(\mu \in \Big(\bar{X}-t_{n-1, \alpha/2}\frac{s}{\sqrt{n}},  \bar{X} + t_{n-1, \alpha/2}\frac{s}{\sqrt{n}}\Big)\Big) &= \alpha
+        \PP\Big(-t_{n-1, \alpha/2} < \frac{\bar{X} - \mu}{s/\sqrt{n}} < t_{n-1, \alpha/2}\Big) &= 1-\alpha\\
+        \PP\Big(-t_{n-1, \alpha/2}\frac{s}{\sqrt{n}} < \bar{X} - \mu < t_{n-1, \alpha/2}\frac{s}{\sqrt{n}}\Big) &= 1-\alpha\\
+        \PP\Big(\bar{X}-t_{n-1, \alpha/2}\frac{s}{\sqrt{n}}< \mu < \bar{X} + t_{n-1, \alpha/2}\frac{s}{\sqrt{n}}\Big) &= 1-\alpha\\
+        \PP\Big(\mu \in \Big(\bar{X}-t_{n-1, \alpha/2}\frac{s}{\sqrt{n}},  \bar{X} + t_{n-1, \alpha/2}\frac{s}{\sqrt{n}}\Big)\Big) &= 1-\alpha
     \end{align*}
     \smallskip
     因此，母體為常態分布下的母體平均值 $(1-\alpha)\times 100\%$ 信賴區間可以寫為
     \[\Big(\bar{X}-t_{n-1, \alpha/2}\frac{s}{\sqrt{n}},  \bar{X} + t_{n-1, \alpha/2}\frac{s}{\sqrt{n}}\Big)\]
-    可以看到，用 $t$ 分布建構的信賴區間和常態分布建構的信賴區間，基本上只差在臨界值改成查 $t_{n-1}$ 的表、以及標準差由母體標準差改為樣本標準差。前面我們提到 $t$ 分布都比標準常態分布來得寬，所以 $t_{n-1, \alpha/2}$ 會比 $z_{\alpha/2}$ 來得大，也就是 $t$ 分布建構的信賴區間比常態分布建構的信賴區間來得寬。用類似的推導也可以得到右尾和左尾的 $(1-\alpha)\times 100\%$ 信賴區間分別可以寫為
-    \[\Big(-\infty,  \bar{X} + t_{n-1, \alpha}\frac{s}{\sqrt{n}}\Big), \;\;\Big(\bar{X}-t_{n-1, \alpha}\frac{s}{\sqrt{n}},  \infty\Big)\]
+    可以看到，用 $t$ 分布建構的信賴區間和常態分布建構的信賴區間，基本上只差在臨界值改成查 $t_{n-1}$ 的表、以及標準差由母體標準差改為樣本標準差。前面我們提到 $t$ 分布都比標準常態分布來得寬，所以 $t_{n-1, \alpha/2}$ 會比 $z_{\alpha/2}$ 來得大；也就是說，在標準差相同的情況下，$t$ 分布建構的信賴區間會比常態分布建構的信賴區間來得寬。用類似的推導也可以得到右尾和左尾的 $(1-\alpha)\times 100\%$ 信賴區間分別可以寫為
+    \[\Big(\bar{X}-t_{n-1, \alpha}\frac{s}{\sqrt{n}},  \infty\Big), \;\;\Big(-\infty,  \bar{X} + t_{n-1, \alpha}\frac{s}{\sqrt{n}}\Big)\]
 
     \bigskip
 
@@ -195,9 +195,9 @@
             \item 當自由度較小時，$t$ 分布的尾巴比標準常態分布來得厚
             \item 當自由度增大（例如，$>30$）時，$t$ 分布趨近於標準常態分布
         \end{itemize}
-        \item 當母體服從常態分布時，母體平均的雙側\textit{精確} $(1-\alpha) \times 100\%$ 信賴區間為
+        \item 當母體服從常態分布時，母體平均的雙尾\textit{精確} $(1-\alpha) \times 100\%$ 信賴區間為
         \[\Bigg(\bar{X} - t_{n-1, \alpha/2} \frac{s}{\sqrt{n}}, \bar{X} + t_{n-1, \alpha/2} \frac{s}{\sqrt{n}}\Bigg)\]
-        \item 當母體不服從常態分布但樣本數較大時，母體平均的雙側\textit{近似} $(1-\alpha) \times 100\%$ 信賴區間可建構為
+        \item 當母體不服從常態分布但樣本數較大時，母體平均的雙尾\textit{近似} $(1-\alpha) \times 100\%$ 信賴區間可建構為
         \[\Bigg(\bar{X} - z_{\alpha/2} \sqrt{\frac{\hat{\sigma}^2}{n}}, \bar{X} + z_{\alpha/2} \sqrt{\frac{\hat{\sigma}^2}{n}}\Bigg)\]
         其中 $\hat{\sigma}^2$ 為母體變異數的估計量。
     \end{takehome}
@@ -218,4 +218,28 @@
         (C) 該樣本學童的體重標準差約 10 公斤
 
         (D) 若計算母群體平均值的 90 \% 信賴區間，其範圍會大於 95\% 信賴區間
+    \end{docexam}
+
+    \begin{docexam}{（113-2醫學(二)）}
+        下列有關信賴區間（confidence interval）的敘述何者最不恰當？
+
+        (A) 信賴區間是一種區間估計的方法
+
+        (B) 95\%的信賴區間代表95\%的樣本落在該區間
+
+        (C) 90\%信賴區間的寬度會比95\%信賴區間的寬度還窄
+
+        (D) 信賴區間也可以用來檢定假說
+    \end{docexam}
+
+    \begin{docexam}{（114-1醫學(二)）}
+        為了解大學生之平均 BMI 為何（假設母體 BMI 標準差為 2），A 研究者自母體隨機抽取 100 位大學生得其平均 BMI 為 21.5，B 研究者自母體隨機抽取 225 位大學生得其平均 BMI 為 22.5。A、B 研究者利用自己收集之資料計算母體平均 BMI 之 95\% 信賴區間（confidence interval, CI），下列敘述何者最恰當？
+
+        (A) A 研究者計算之 95\% CI 意義為約 95\% 的大學生之 BMI 可能出現之範圍
+
+        (B) A 研究者計算之 95\% CI 寬度會是 B 研究者計算之 95\% CI 寬度的 1.5 倍
+
+        (C) 因信心水準皆為 95\%，故 A 研究者計算之 95\% CI 寬度會與 B 研究者計算之 95\% CI 寬度相同
+
+        (D) A 研究者計算之 95\% CI 中點會與 B 研究者計算之 95\% CI 中點相同
     \end{docexam}
