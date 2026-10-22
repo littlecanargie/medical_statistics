@@ -1,0 +1,110 @@
+\input{practice-preamble}
+\renewcommand{\chapterlabel}{第 4 章\ 隨機變數與機率分布}
+\newcommand{\handoutkind}{課堂分組練習}
+
+% Question list: the blank space after each question stretches to fill the page.
+\newenvironment{questions}{\begin{enumerate}[leftmargin=*, label=\textbf{\arabic*.}, itemsep=0pt]}{\end{enumerate}}
+\newcommand{\blank}{\par\vspace{\stretch{1}}}
+\newcommand{\members}{\small 組員：\rule{0.8\textwidth}{0.4pt}\par\medskip}
+
+\begin{document}
+
+%% ---------------------------------------------------------------- 第 1 組
+\grouptitle{1}{\stars{1}}{疫苗注射部位痠痛}
+\members
+\begin{scenario}
+    某疫苗接種後出現注射部位痠痛的機率為 $0.2$。今天上午診間有 5 位互不相識的民眾接種。另外，已知接種後當晚體溫服從平均值 37.0°C、標準差 0.5°C 的常態分布。
+\end{scenario}
+\begin{questions}
+    \item \textbf{建模：}令 $X$ 為 5 人中痠痛的人數。$X$ 服從什麼分布？參數為何？需要哪些假設？ \blank
+    \item \textbf{離散機率：}計算 $\PP(X=1)$ 與 $\PP(X \ge 1)$。 \blank
+    \item \textbf{期望值與變異數：}求 $\EE(X)$ 與 $\var(X)$。若診所每診固定成本 200 元，每位痠痛者另給 50 元的冰敷包，總成本 $Y = 50X + 200$，求 $\EE(Y)$ 與 $\sd(Y)$。 \blank
+    \item \textbf{常態：由數值求機率。}當晚體溫高於 38.0°C 的比例是多少？ \blank
+    \item \textbf{常態：由機率求數值。}體溫最高的 $2.5\%$ 民眾，體溫至少幾度？ \blank
+    \item \textbf{動動腦：}若這 5 人是同住的一家人，第 1 題的模型還合理嗎？哪個假設最可能被違反？ \blank
+\end{questions}
+\newpage
+
+%% ---------------------------------------------------------------- 第 2 組
+\grouptitle{2}{\stars{2}}{高血壓服藥遵從}
+\members
+\begin{scenario}
+    某門診高血壓病人規律服藥的機率為 $0.9$。隨機抽 10 位病人。另外，該門診病人收縮壓服從 $\NN(128, 12^2)$ mmHg。
+\end{scenario}
+\begin{questions}
+    \item \textbf{建模：}令 $X$ 為規律服藥人數，$W = 10 - X$ 為未規律服藥人數。兩者各服從什麼分布？形狀各為左偏還是右偏？ \blank
+    \item \textbf{離散機率：}計算 $\PP(X \ge 9)$。用 $W$ 來算會得到一樣的答案嗎？ \blank
+    \item \textbf{期望值與變異數：}求 $\EE(X)$、$\var(X)$、$\EE(W)$、$\var(W)$，並用 $\var(aX+b)$ 的公式解釋為何兩個變異數相等。 \blank
+    \item \textbf{常態：由數值求機率。}收縮壓介於 122 到 140 mmHg 的病人比例是多少？ \blank
+    \item \textbf{常態：由機率求數值。}收縮壓最低的 $5\%$ 病人，收縮壓低於多少？ \blank
+    \item \textbf{動動腦：}$X + W = 10$ 是常數，所以 $\var(X+W)=0$；但 $\var(X)+\var(W) \ne 0$。「變異數相加」的公式哪裡出了問題？ \blank
+\end{questions}
+\newpage
+
+%% ---------------------------------------------------------------- 第 3 組
+\grouptitle{3}{\stars{3}}{急診胸痛病人}
+\members
+\begin{scenario}
+    某醫院急診平均每小時有 3 位胸痛病人到院。另外，病人到院至完成心電圖的時間服從 $\NN(8, 2^2)$ 分鐘，品質指標要求 10 分鐘內完成。
+\end{scenario}
+\begin{questions}
+    \item \textbf{建模：}令 $X$ 為 20 分鐘內到院的胸痛病人數。$X$ 服從什麼分布？參數為何？需要哪三個條件？ \blank
+    \item \textbf{離散機率：}計算 20 分鐘內沒有病人到院的機率，以及有 2 位以上到院的機率。 \blank
+    \item \textbf{期望值與變異數：}一個 8 小時的班，胸痛病人數的期望值與標準差為何？若把班拉長為 16 小時，標準差會變成兩倍嗎？ \blank
+    \item \textbf{常態：由數值求機率。}目前有多少比例的病人在 10 分鐘內完成心電圖？ \blank
+    \item \textbf{常態：由機率求數值。}若標準差不變，平均時間要降到多少，才能讓 $97.5\%$ 的病人達標？ \blank
+    \item \textbf{動動腦：}卜瓦松分布的三個條件中，哪些在真實急診最可能不成立？若各天的到院速率不同（例如連假與平日），把許多天的每日人數放在一起看，變異數與平均值會有什麼關係？ \blank
+\end{questions}
+\newpage
+
+%% ---------------------------------------------------------------- 第 4 組
+\grouptitle{4}{\stars{4}}{血紅素與貧血}
+\members
+\begin{scenario}
+    某地區成年女性血紅素服從 $\NN(13.5, 1.2^2)$ g/dL，低於 12 g/dL 定義為貧血。某社區活動隨機抽 8 位成年女性檢驗。
+\end{scenario}
+\begin{questions}
+    \item \textbf{建模：}令 $B$ 為單一女性是否貧血（$1$/$0$），$X$ 為 8 人中貧血的人數。兩者各服從什麼分布？參數從何而來？ \blank
+    \item \textbf{離散機率：}計算 8 人中有 2 人以上貧血的機率。（需先完成第 4 題） \blank
+    \item \textbf{期望值與變異數：}求 $\EE(X)$ 與 $\var(X)$。若改抽 80 人，期望值與標準差各變為幾倍？ \blank
+    \item \textbf{常態：由數值求機率。}隨機一位女性貧血的機率是多少？ \blank
+    \item \textbf{常態：由機率求數值。}捐血中心希望 $80\%$ 的女性符合捐血資格，血紅素門檻應設在多少？ \blank
+    \item \textbf{動動腦：}把血紅素二分為「貧血與否」後，損失了什麼資訊？若全體平均值下降 0.6 g/dL（半個標準差），貧血比例會變成多少？這個變化是線性的嗎？ \blank
+\end{questions}
+\newpage
+
+%% ---------------------------------------------------------------- 第 5 組
+\grouptitle{5}{\stars{5}}{癲癇發作}
+\members
+\begin{scenario}
+    某癲癇門診的病人中，$80\%$ 控制良好，每月發作次數服從 $Poisson(0.5)$；$20\%$ 控制不佳，服從 $Poisson(4)$。另外，病人的抗癲癇藥物血中濃度服從常態分布，治療範圍為 50--100 $\mu$g/mL。
+\end{scenario}
+\begin{questions}
+    \item \textbf{建模：}令 $X$ 為隨機一位病人的每月發作次數。$X$ 服從卜瓦松分布嗎？寫出 $f_X(x)$。 \blank
+    \item \textbf{離散機率：}計算 $\PP(X=0)$，並與 $Poisson(1.2)$ 的 $\PP(X=0)$ 比較。 \blank
+    \item \textbf{期望值與變異數：}求 $\EE(X)$ 與 $\var(X)$（提示：先由 $\var(X) = \EE(X^2)-(\EE(X))^2$ 反推各子群的 $\EE(X^2)$）。變異數與期望值相等嗎？ \blank
+    \item \textbf{常態：由數值求機率。}若濃度服從 $\NN(70, 15^2)$，落在治療範圍內的比例是多少？ \blank
+    \item \textbf{常態：由機率求數值。}若另一家醫院有 $10\%$ 的病人低於 50、$5\%$ 的病人高於 100，求該院濃度分布的 $\mu$ 與 $\sigma$。 \blank
+    \item \textbf{動動腦：}若你只拿到全體病人的發作次數，發現樣本變異數遠大於樣本平均值，可以推論什麼？若某病人本月零發作，他屬於控制不佳組的機率是多少？ \blank
+\end{questions}
+\newpage
+
+%% ---------------------------------------------------------------- 第 6 組
+\grouptitle{6}{\stars{6}}{降壓藥臨床試驗}
+\members
+\begin{scenario}
+    某試驗中，新藥組病人的收縮壓降幅 $D_T \sim \NN(12, 8^2)$，安慰劑組 $D_C \sim \NN(5, 8^2)$（單位 mmHg），兩組為不同病人。降幅達 10 mmHg 以上者稱為「反應者」。每組各隨機抽 6 人。
+
+    \smallskip
+    \textit{提示：兩個獨立的常態隨機變數相減後仍服從常態分布。}
+\end{scenario}
+\begin{questions}
+    \item \textbf{建模：}令 $X_T$、$X_C$ 為兩組中的反應者人數。兩者各服從什麼分布？參數為何？ \blank
+    \item \textbf{離散機率：}計算「新藥組 6 人全為反應者」且「安慰劑組無人反應」的機率。 \blank
+    \item \textbf{期望值與變異數：}求 $\EE(X_T - X_C)$ 與 $\var(X_T - X_C)$。 \blank
+    \item \textbf{常態：由數值求機率。}兩組各隨機抽一人，新藥組那位降幅較大的機率是多少？ \blank
+    \item \textbf{常態：由機率求數值。}若把反應者的門檻改為「安慰劑組只有 $5\%$ 達標」的降幅，門檻是多少？此時新藥組的反應率為何？ \blank
+    \item \textbf{動動腦：}若改為同一批病人先用安慰劑、再用新藥，$\var(D_T - D_C) = \var(D_T)+\var(D_C)$ 還成立嗎？你預期差值的變異數會更大還是更小？這對比較兩種治療有什麼好處？ \blank
+\end{questions}
+
+\end{document}

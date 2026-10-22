@@ -1,0 +1,41 @@
+\input{practice-preamble}
+\renewcommand{\chapterlabel}{第 5--6 章\ 抽樣分布、中央極限定理與區間估計}
+\newcommand{\handoutkind}{課堂練習}
+
+% Blank working space after each subproblem; the gaps share the rest of the page equally
+\newcommand{\workspace}{\par\vspace{\stretch{1}}}
+
+\begin{document}
+
+%% ---------------------------------------------------------------- 情境 1
+\scenariotitle{1}{社區高血壓篩檢}{第 5、6 章}
+\begin{scenario}
+    某社區成人收縮壓的母體平均為 $\mu$ mmHg、母體標準差為 $\sigma$ mmHg。衛生所隨機抽取 64 位成人進行篩檢，各人的測量結果互相獨立。
+\end{scenario}
+\begin{subproblems}
+    \sub{1} 令 $\bar{X}$ 為 64 人的平均收縮壓。$\bar{X}$ 是不是統計量？它的期望值與標準誤各為何？ \workspace
+
+    \sub{2} 在不對母體分布進行任何假設的情況下，我們能不能計算 $\PP(\bar{X} > \mu + \sigma/4)$？若能，求其值。同樣的方法能不能用來計算「單一成人收縮壓超過 $\mu + \sigma/4$ mmHg」的機率？ \workspace
+
+    \sub{2} 假設母體服從常態分布。篩檢結果為：平均收縮壓 131.2 mmHg、樣本標準差 15.2 mmHg，64 人中有 19 人為高血壓（收縮壓 $\ge 140$ mmHg）。分別求母體平均收縮壓與高血壓盛行率的雙尾 $95\%$ 信賴區間。（$t_{63,\,0.025} = 1.998$） \workspace
+
+    \sub{3} 衛生所的報告寫道：「有 $95\%$ 的社區成人收縮壓介於第 3 小題所得的信賴區間之內。」這句話哪裡有問題？在母體服從常態分布的假設下，請用樣本資料估計約 $95\%$ 社區成人的收縮壓所落的範圍。若樣本數增為 256 人（樣本平均與樣本標準差大致不變），這兩個區間的寬度各會如何變化？ \workspace
+\end{subproblems}
+\newpage
+
+%% ---------------------------------------------------------------- 情境 2
+\scenariotitle{2}{急診候診時間改善方案}{第 5、6 章}
+\begin{scenario}
+    根據過去資料，某醫院急診病人從掛號到看診的等候時間平均為 40 分鐘、標準差為 40 分鐘。另外，每日「未看診即離開」(left without being seen, LWBS) 的病人數服從平均每日 4 人的卜瓦松分布。醫院隨後推行一項縮短等候時間的改善方案。
+\end{scenario}
+\begin{subproblems}
+    \sub{1} 若有人主張等候時間服從 $\NN(40, 40^2)$，依此計算等候時間小於 0 分鐘的機率。這個結果說明了什麼？等候時間的分布比較可能長什麼樣子？ \workspace
+
+    \sub{2} 改善方案實施前，隨機抽取 100 位病人，求平均等候時間低於 32 分鐘的機率。在等候時間不是常態分布的情況下，為什麼仍然可以這樣計算？ \workspace
+
+    \sub{2} 改善方案實施前，30 天內 LWBS 的總人數 $T$ 服從什麼分布？參數為何？以常態近似（含連續性校正）計算 $\PP(T \ge 140)$。 \workspace
+
+    \sub{2} 改善方案實施後，隨機抽取 16 位病人，平均等候時間為 31 分鐘、樣本標準差為 12 分鐘，並假設改善後的等候時間近似常態分布。求母體平均等候時間的雙尾 $95\%$ 信賴區間與左尾 $95\%$ 信賴區間。這兩個區間是否包含 40 分鐘？（$t_{15,\,0.025} = 2.131$；$t_{15,\,0.05} = 1.753$） \workspace
+\end{subproblems}
+
+\end{document}
