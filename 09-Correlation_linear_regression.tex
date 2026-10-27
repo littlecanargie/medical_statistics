@@ -180,7 +180,7 @@
     \smallskip
     \[t = \frac{\hat{\beta}_1}{\widehat{se}(\hat{\beta}_1)}\]
     \smallskip
-    該檢定的 $p$ 值即為 $2\times\PP(t_{n-2} \ge |t|)$，檢定統計量的拒絕區則為 $|t| \ge t_{n-2, \alpha/2}$。相對地，如果要建構 $\beta_1$ 的 $(1-\alpha)\times 100\%$ 雙尾信賴區間，則為：
+    該檢定的 $p$ 值即為 $2\times\PP(t_{n-2} \ge |t|)$，檢定統計量的拒絕域則為 $|t| \ge t_{n-2, \alpha/2}$。相對地，如果要建構 $\beta_1$ 的 $(1-\alpha)\times 100\%$ 雙尾信賴區間，則為：
     \smallskip
     \[\Big(\hat{\beta}_1 - t_{n-2, \alpha/2}\widehat{se}(\hat{\beta}_1), \hat{\beta}_1 + t_{n-2, \alpha/2}\widehat{se}(\hat{\beta}_1)\Big)\]
     \smallskip
@@ -339,7 +339,7 @@
     \smallskip
     \[t = \frac{\hat{\beta}_j}{\widehat{se}(\hat{\beta}_j)}\]
     \smallskip
-    該檢定的 $p$ 值為 $2\times\PP(t_{n-p-1} \ge |t|)$，檢定統計量的拒絕區則為 $|t| \ge t_{n-p-1, \alpha/2}$。當虛無假說被拒絕時，代表在控制其他解釋變數不變的情況下，解釋變數 $X_j$ 和 $Y$ 之間有顯著的線性關係。如果要建構 $\beta_j$ 的 $(1-\alpha)\times 100\%$ 雙尾信賴區間，則為：
+    該檢定的 $p$ 值為 $2\times\PP(t_{n-p-1} \ge |t|)$，檢定統計量的拒絕域則為 $|t| \ge t_{n-p-1, \alpha/2}$。當虛無假說被拒絕時，代表在控制其他解釋變數不變的情況下，解釋變數 $X_j$ 和 $Y$ 之間有顯著的線性關係。如果要建構 $\beta_j$ 的 $(1-\alpha)\times 100\%$ 雙尾信賴區間，則為：
     \smallskip
     \[\Big(\hat{\beta}_j - t_{n-p-1, \alpha/2}\widehat{se}(\hat{\beta}_j), \hat{\beta}_j + t_{n-p-1, \alpha/2}\widehat{se}(\hat{\beta}_j)\Big)\]
     \smallskip
@@ -392,7 +392,7 @@
 
     統計學上可以證明出，在虛無假說下，$\frac{SSR_1-SSR_0}{q}$ 的期望值恰好等於誤差變異數 $\sigma^2$（其中分母的 $q$ 為兩個模型的參數個數差）。同時，由於 $SSE_1$ 即為 $M_1$ 模型算出的殘差平方和，根據前面關於多重回歸統計推論的結果，我們可以用 $\frac{SSE_1}{n-p-1}$ 來估計誤差變異數 $\sigma^2$。準此，我們將兩個在虛無假說下均能估計誤差變異數的統計量相除，建立出以下的檢定統計量並得出它的虛無分布：
     \[F = \frac{(SSR_1 - SSR_0)/q}{SSE_1/(n-p-1)} \sim F_{q, n-p-1}\]
-    其中 $F_{q, n-p-1}$ 為一個新的分布，稱為 $F$ 分布；其具有兩個參數，分子自由度（此處為$q$）和分母自由度（此處為$n-p-1$）。在對立假說為真時，由於 $M_0$ 省略掉了有解釋能力的解釋變數，因此其配適度會劣於 $M_1$，造成 $SSR_0$ 遠低於 $SSR_1$，因此 $\frac{SSR_1-SSR_0}{q}$ 的期望值會高於 $\sigma^2$，使 $F$ 檢定統計量的數值偏大。因此本檢定的 $p$ 值須取右尾機率 $\PP(F_{q, n-p-1} \ge F)$，且顯著水準為 $\alpha$ 的拒絕區亦為右尾的 $F > F_{q, n-p-1, \alpha}$。此檢定被稱為模型比較的 \textit{$F$ 檢定} ($F$ test)。
+    其中 $F_{q, n-p-1}$ 為一個新的分布，稱為 $F$ 分布；其具有兩個參數，分子自由度（此處為$q$）和分母自由度（此處為$n-p-1$）。在對立假說為真時，由於 $M_0$ 省略掉了有解釋能力的解釋變數，因此其配適度會劣於 $M_1$，造成 $SSR_0$ 遠低於 $SSR_1$，因此 $\frac{SSR_1-SSR_0}{q}$ 的期望值會高於 $\sigma^2$，使 $F$ 檢定統計量的數值偏大。因此本檢定的 $p$ 值須取右尾機率 $\PP(F_{q, n-p-1} \ge F)$，且顯著水準為 $\alpha$ 的拒絕域亦為右尾的 $F > F_{q, n-p-1, \alpha}$。此檢定被稱為模型比較的 \textit{$F$ 檢定} ($F$ test)。
 
     \medskip
     

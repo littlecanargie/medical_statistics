@@ -710,6 +710,20 @@ draw=black
 \end{itemize}
 \end{tcolorbox}}
 
+% Red warning box (e.g. common misinterpretations), same layout as takehome
+\tcbset{
+    caution/.style={
+        introduction,
+        colback=red!8,
+        colframe=red!70!black,
+        colbacktitle=red!70!black
+    },
+}
+\newenvironment{caution}[1]{
+\begin{tcolorbox}[caution,title={#1}]
+}{%
+\end{tcolorbox}}
+
 \RequirePackage{adforn}
 \newenvironment{problemset}[1][\ifdefstring{\ELEGANT@lang}{en}{\textbf{\chaptername\, Exercise}}{\textbf{\chaptername\, 習題}}]{
 \begin{center}
